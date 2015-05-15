@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/SymtomView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    
+    <TextView
+        android:id="@+id/before"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="생리 전"
+        android:textAppearance="?android:attr/textAppearanceMedium" />\
+        
+    <EditText
+        android:id="@+id/EditBefore"
+        android:layout_width="40dp"
+        android:layout_height="40dp" 
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <TextView
+        android:id="@+id/text1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="일"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+       <TextView
+           android:id="@+id/text2"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+           android:layout_marginRight="10dp"
+           android:text="-"
+           android:textAppearance="?android:attr/textAppearanceMedium" />
+       
+        <TextView
+        android:id="@+id/after"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="생리 후"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+        
+    <EditText
+        android:id="@+id/Editafter"
+        android:layout_width="40dp"
+        android:layout_height="40dp" 
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+     <TextView
+        android:id="@+id/text3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="일"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+     
+
+</LinearLayout>
