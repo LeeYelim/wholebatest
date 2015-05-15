@@ -29,22 +29,6 @@ import com.banana.banana.love.NetworkManager.OnResultListener;
 public class SignUpActivity extends ActionBarActivity {
 
 	Button btn_next;
-<<<<<<< HEAD
-	EditText idView;
-	EditText pwdView;
-	EditText pwdOkView;
-	CheckBox chk_agree;
-	String pwd; 
-	String pwdOk;
-	TextView TextpwdOK;
-	int joincode = 2;  
-	//int gender=0;
-	String gender = "F";
-	int user_req = 0; 
- 	int user_no;
- 	String reg_id = "123"; //나중에 gcmid로 바꿔야함!
-	String user_id, user_pass, user_phone; 
-=======
 	EditText idView, pwdView, pwdOkView; 
 	CheckBox chk_agree;
 	String pwd, pwdOk;  
@@ -54,16 +38,13 @@ public class SignUpActivity extends ActionBarActivity {
  	String reg_id = "regid"; //나중에 실제 gcmid로 바꿔야함!
 	String user_id, user_pass, user_phone; 
 	
->>>>>>> yelim
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
-<<<<<<< HEAD
-		chk_agree = (CheckBox)findViewById(R.id.chk_agree);
-=======
+
 		chk_agree = (CheckBox)findViewById(R.id.chk_agree1);
->>>>>>> yelim
 		btn_next = (Button)findViewById(R.id.btn_next);
 		idView = (EditText)findViewById(R.id.edit_id);
 		pwdView = (EditText)findViewById(R.id.edit_pwd);
@@ -81,11 +62,6 @@ public class SignUpActivity extends ActionBarActivity {
 			}
 		});
 		
-<<<<<<< HEAD
-		
-		
-=======
->>>>>>> yelim
 		btn_next.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -96,14 +72,7 @@ public class SignUpActivity extends ActionBarActivity {
 				    user_pass = pwdView.getText().toString();				
 				    TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 				    user_phone = telManager.getLine1Number();
-<<<<<<< HEAD
-			 		
-				    if(user_phone.startsWith("+82")){
-			 			user_phone = user_phone.replace("+82", "0");
-			 		}
-			 	
-				NetworkManager.getInstnace().addjoin(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<JoinResult>() {
-=======
+
 				    if(user_phone.startsWith("+82")){
 			 			user_phone = user_phone.replace("+82", "0");
 			 		}
@@ -113,25 +82,16 @@ public class SignUpActivity extends ActionBarActivity {
 					user_phone = num1+"-"+num2+"-"+num3;
 			 	
 					NetworkManager.getInstnace().addjoin(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<JoinResult>() {
->>>>>>> yelim
 					
 					@Override
 					public void onSuccess(JoinResult result) {
 						// TODO Auto-generated method stub
-<<<<<<< HEAD
-						//PropertyManager.getInstance().setUserId(user_id);
-						//PropertyManager.getInstance().setPassword(user_pass);  
-						user_no = result.result.user_no;
-						PropertyManager.getInstance().setUserNo(user_no);
-						Login();
-						
-=======
+
 						PropertyManager.getInstance().setUserId(user_id);
 						PropertyManager.getInstance().setPassword(user_pass);
 						login();
 						
 						//Login();
->>>>>>> yelim
 					} 
 					@Override
 					public void onFail(int code) { 
@@ -142,43 +102,16 @@ public class SignUpActivity extends ActionBarActivity {
 		});
 	}
 
-<<<<<<< HEAD
-	private void Login() {
-		// TODO Auto-generated method stub
-=======
+
 	
 	private void login() {
->>>>>>> yelim
 		NetworkManager.getInstnace().login(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<LoginResult>() {
 
 			@Override
 			public void onSuccess(LoginResult result) {
-<<<<<<< HEAD
-				autoLogin();		
-				
-			}
 
-			@Override
-			public void onFail(int code) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
-		
-	}
-	
-	protected void autoLogin() {
-		// TODO Auto-generated method stub
-		NetworkManager.getInstnace().autoLogin(SignUpActivity.this, user_no, user_phone, new OnResultListener<AutoLoginResponse>() {
-
-			@Override
-			public void onSuccess(AutoLoginResponse result) {
-				// TODO Auto-generated method stub
-				searchJoinInfo(); 
-=======
 				// TODO Auto-generated method stub
 				searchJoinInfo();
->>>>>>> yelim
 			}
 
 			@Override
@@ -188,59 +121,35 @@ public class SignUpActivity extends ActionBarActivity {
 			}
 		});
 	}
-<<<<<<< HEAD
-
-	private void searchJoinInfo() {   
-		NetworkManager.getInstnace().searchJoinInfo(SignUpActivity.this, joincode, gender, user_req, new OnResultListener<JoinResult>() {
-			@Override
-			public void onSuccess(JoinResult result) {
-				int jcode = result.result.items.join_code;
-				//String join_code = Integer.toString(jcode);
-				
-=======
 	
 	private void searchJoinInfo() { 
 		NetworkManager.getInstnace().searchJoinInfo(SignUpActivity.this, new OnResultListener<JoinResult>() {
 			@Override
 			public void onSuccess(JoinResult result) {
 					int jcode = result.result.items.join_code;  
->>>>>>> yelim
 				if (jcode == 1) {
 					//Bundle bundle = new Bundle();
 					//bundle.putInt("join_code", jcode);
-					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
-<<<<<<< HEAD
-					joinData.join_code = jcode;
-=======
+
 					joinData.join_code = jcode; 
->>>>>>> yelim
 					Intent intent = new Intent(SignUpActivity.this, SexInfoActivity.class);
 					intent.putExtra("joinData", joinData); 
 					//intent.putExtras(bundle);
 					startActivity(intent);
-<<<<<<< HEAD
-				} else if(jcode == 2) {
-					//Bundle bundle = new Bundle();
-					//bundle.putInt("join_code", jcode); 
-					PropertyManager.getInstance().setUserGender(result.result.items.gender);
 
-=======
 					finish();
 				} else if(jcode == 2) {
 					//Bundle bundle = new Bundle();
 					//bundle.putInt("join_code", jcode); 
 					PropertyManager.getInstance().setUserGender(result.result.items.user_gender);
->>>>>>> yelim
+
 					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
 					joinData.join_code = jcode;
 					Intent intent = new Intent(SignUpActivity.this, CoupleRequestActivity.class);
 					//intent.putExtras(bundle); 
 					intent.putExtra("joinData", joinData); 
 					startActivity(intent);
-<<<<<<< HEAD
-=======
 					finish();
->>>>>>> yelim
 				}  
 			}
 
@@ -251,8 +160,7 @@ public class SignUpActivity extends ActionBarActivity {
 			}
 		});
 	}
-<<<<<<< HEAD
-=======
+
 	
 	/*private void Login() {
 		// TODO Auto-generated method stub
@@ -291,9 +199,7 @@ public class SignUpActivity extends ActionBarActivity {
 		});
 	}*/
 
-	
->>>>>>> yelim
-		
+
 		/*
 		NetworkManager.getInstnace().searchJoinInfo(SignUpActivity.this, user_no, new OnResultListener<JoinResult>() {
 

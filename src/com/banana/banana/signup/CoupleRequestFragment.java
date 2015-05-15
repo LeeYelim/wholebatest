@@ -36,10 +36,7 @@ public class CoupleRequestFragment extends Fragment {
 		//} 
 		user_gender = PropertyManager.getInstance().getUserGender();  
 		
-<<<<<<< HEAD
-		JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
-		join_code = joinData.join_code;
-=======
+
 		Bundle bundle = getActivity().getIntent().getExtras();
 		if (bundle == null) {
 			bundle = new Bundle();
@@ -47,7 +44,6 @@ public class CoupleRequestFragment extends Fragment {
 		JoinCodeInfoParcel joinData = bundle.getParcelable("joinData");
 		join_code = joinData.join_code;  
 		
->>>>>>> yelim
 		if(join_code == 3) {
 			btnRequest.setEnabled(false);
 		}
@@ -68,11 +64,8 @@ public class CoupleRequestFragment extends Fragment {
 					@Override
 					public void onSuccess(JoinResult result) {   
 						//버튼 비활성화
-<<<<<<< HEAD
-						btnRequest.setSelected(false);
-=======
+
 						btnRequest.setEnabled(false);
->>>>>>> yelim
 					}
 					
 					@Override

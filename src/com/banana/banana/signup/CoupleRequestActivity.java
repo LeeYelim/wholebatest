@@ -38,27 +38,16 @@ public class CoupleRequestActivity extends ActionBarActivity {
 		//}
 		//String join_code = bundle.getString("join_code"); 
 		
-<<<<<<< HEAD
-=======
-		//if (bundle == null) {
-		//	bundle = new Bundle();
-		//}
-		//JoinCodeInfoParcel joinData = bundle.getParcelable("joinData");
-		//int join_code = joinData.join_code;
-		
->>>>>>> yelim
+
 		Bundle bundle = getIntent().getExtras();
 		if (bundle == null) {
 			bundle = new Bundle();
 		}
 		JoinCodeInfoParcel joinData = bundle.getParcelable("joinData");
-<<<<<<< HEAD
-		int join_code = joinData.join_code;
-		 
-=======
+
 		
 		int join_code = joinData.join_code;
->>>>>>> yelim
+
 		if(join_code == 1) {
 			changeTab1();
 		} else if(join_code == 2) {

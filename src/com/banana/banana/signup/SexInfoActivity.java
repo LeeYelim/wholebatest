@@ -62,17 +62,7 @@ public class SexInfoActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-<<<<<<< HEAD
-				//Intent i = getIntent();
-				//Bundle bundle = i.getExtras(); 
-				//if (bundle == null) {
-					//bundle = new Bundle();
-				//}
-				//bundle.putString("gender", gender);
-				PropertyManager.getInstance().setUserGender(gender);
-				Intent intent = new Intent(SexInfoActivity.this, CoupleRequestActivity.class);
-				//intent.putExtras(bundle);
-=======
+
 				Bundle bundle = getIntent().getExtras();
 				if (bundle == null) {
 					bundle = new Bundle();
@@ -81,7 +71,6 @@ public class SexInfoActivity extends ActionBarActivity {
 				PropertyManager.getInstance().setUserGender(gender);
 				Intent intent = new Intent(SexInfoActivity.this, CoupleRequestActivity.class);
 				intent.putExtra("joinData", joinData);
->>>>>>> yelim
 				startActivity(intent);
 			}
 		});

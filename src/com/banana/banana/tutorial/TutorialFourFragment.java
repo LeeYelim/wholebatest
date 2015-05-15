@@ -32,10 +32,8 @@ public class TutorialFourFragment extends Fragment {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(getActivity(), IntroActivity.class);
 				startActivity(intent);
-<<<<<<< HEAD
-=======
+
 				getActivity().finish(); 
->>>>>>> yelim
 			}
 		});
 		return view;

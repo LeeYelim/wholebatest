@@ -14,13 +14,9 @@ import com.banana.banana.R;
 public class FirstMeetingActivity extends ActionBarActivity {
 /*-----------요청자가 응답받으면 입력할 첫만남 페이지 */
 	Button btn_next;
-<<<<<<< HEAD
-	EditText FirstDateYear, FirstDateMonth, FirstDateDay;
-	String gender;
-=======
+
 	EditText FirstDateYear, FirstDateMonth, FirstDateDay; 
-	
->>>>>>> yelim
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -39,10 +39,6 @@ public class BirthDayInfoActivity extends ActionBarActivity {
 			bundle = new Bundle();
 		} */ 
 		user_gender = PropertyManager.getInstance().getUserGender(); 
-<<<<<<< HEAD
-=======
-		 
->>>>>>> yelim
 		
 		btn_before = (Button)findViewById(R.id.btn_before);
 		btn_before.setOnClickListener(new View.OnClickListener() {
@@ -85,12 +81,9 @@ public class BirthDayInfoActivity extends ActionBarActivity {
 			@Override
 			public void onSuccess(JoinResult result) {
 				// TODO Auto-generated method stub
-<<<<<<< HEAD
-=======
-				
-		
+
 				Log.i("user_gender", user_gender);
->>>>>>> yelim
+
 				if(user_gender.equals("M")) {
 					Intent intent = new Intent(BirthDayInfoActivity.this, BananaMainActivity.class);
 					intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -98,11 +91,7 @@ public class BirthDayInfoActivity extends ActionBarActivity {
 					startActivity(intent);
 				} else if(user_gender.equals("F")) {
 					Intent intent = new Intent(BirthDayInfoActivity.this, PeriodInfoActivity.class); 
-<<<<<<< HEAD
-					intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
-					intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-=======
->>>>>>> yelim
+
 					startActivity(intent);  
 				}
 			}

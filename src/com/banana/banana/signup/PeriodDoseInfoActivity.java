@@ -89,9 +89,7 @@ public class PeriodDoseInfoActivity extends ActionBarActivity {
 				String hour = hourView.getText().toString();
 				String minute = minuteView.getText().toString();
 				String pills_time = hour+":"+minute;
-				
-<<<<<<< HEAD
-=======
+
 				if(year.equals("")) {
 					pills_date = "";
 				}
@@ -100,7 +98,7 @@ public class PeriodDoseInfoActivity extends ActionBarActivity {
 					pills_time = "";
 				}
 			
->>>>>>> yelim
+
 				Bundle bundle = getIntent().getExtras();
 				WomanInfoParcelData wdata = bundle.getParcelable("wdata"); 
 				wdata.user_pills = user_pills;
