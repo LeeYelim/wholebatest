@@ -18,7 +18,11 @@
             android:text="TextView" />
 
         <ImageView
+<<<<<<< HEAD
             android:id="@+id/love_progressBar"
+=======
+            android:id="@+id/imageView1"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="100dp"
             android:src="@drawable/ic_launcher" />

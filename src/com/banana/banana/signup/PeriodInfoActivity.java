@@ -15,6 +15,10 @@ public class PeriodInfoActivity extends ActionBarActivity {
 
 	Button btn_before, btn_next;
 	EditText startYear, startMonth, startDay, endYear, endMonth, endDay, edit_period_cycle;
+<<<<<<< HEAD
+=======
+	String period_start, period_end;
+>>>>>>> yelim
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,9 +54,20 @@ public class PeriodInfoActivity extends ActionBarActivity {
 				String EndYear = endYear.getText().toString();
 				String EndMonth = endMonth.getText().toString();
 				String EndDay = endDay.getText().toString();
+<<<<<<< HEAD
 				String period_start = StartYear+"-"+StartMonth+"-"+StartDay;
 				String period_end = EndYear+"-"+EndMonth+"-"+EndDay;
 				
+=======
+				
+				period_start = StartYear + "-" + StartMonth + "-" + StartDay;
+				period_end = EndYear + "-" + EndMonth + "-" + EndDay;
+				
+				if(StartYear.equals("")||StartMonth.equals("")||StartDay.equals("")||EndYear.equals("")||EndMonth.equals("")||EndDay.equals("")) { 
+					period_start = "";
+					period_end = "";
+				} 
+>>>>>>> yelim
 				 
 				String period_cycle = edit_period_cycle.getText().toString();
 				

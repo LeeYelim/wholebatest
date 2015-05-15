@@ -60,7 +60,11 @@
         android:layout_marginTop="150dp"
         android:text="생리  증후군"
         android:textStyle="bold"
+<<<<<<< HEAD
         
+=======
+        android:textColor="@color/join_font_color"
+>>>>>>> yelim
         android:textSize="20sp" />
 
     <TextView
@@ -261,16 +265,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
+<<<<<<< HEAD
            
             android:textSize="13sp" />
 
         <ListView
+=======
+            android:text="@string/symtom_info"
+            android:textSize="13sp" />
+
+        <com.banana.banana.signup.ListLinearLayout
+>>>>>>> yelim
             android:id="@+id/list_Symtom"
             android:layout_width="224dp"
             android:layout_height="match_parent"
             android:layout_marginBottom="24dp" >
 
+<<<<<<< HEAD
         </ListView>
+=======
+        </com.banana.banana.signup.ListLinearLayout>
+>>>>>>> yelim
 
     </FrameLayout>
 

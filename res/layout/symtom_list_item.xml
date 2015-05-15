@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="horizontal" >
 
+<<<<<<< HEAD
+=======
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="31dp" >
+   
+
+>>>>>>> yelim
     <TextView
         android:id="@+id/SymtomView"
         android:layout_width="50dp"
@@ -59,6 +67,10 @@
         android:layout_height="wrap_content"
         android:text="일"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+<<<<<<< HEAD
      
 
+=======
+ </LinearLayout>
+>>>>>>> yelim
 </LinearLayout>

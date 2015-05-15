@@ -9,6 +9,10 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.support.v7.app.ActionBar;
+>>>>>>> yelim
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,6 +23,10 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+<<<<<<< HEAD
+=======
+import android.widget.ImageView;
+>>>>>>> yelim
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,6 +34,10 @@ import android.widget.Toast;
 
 import com.banana.banana.R;
 import com.banana.banana.love.NetworkManager.OnResultListener;
+<<<<<<< HEAD
+=======
+import com.banana.banana.main.BananaMainActivity;
+>>>>>>> yelim
 import com.banana.banana.setting.SettingActivity;
 
 import de.passsy.holocircularprogressbar.HoloCircularProgressBar;
@@ -37,7 +49,7 @@ public class LoveActivity extends ActionBarActivity {
 	LoveAdapter mLAdapter; 
 	View headerView; 
 	Button btn_LoveAdd; 
-	TextView noCondomView, isCondomView, LoveDayView, YearView, monthView;
+	TextView noCondomView, isCondomView, LoveDayView, YearView, monthView, titleView;
 	//ToggleButton repeatLovebtn;
 	int orderby=0;
 	int year, month;
@@ -48,17 +60,38 @@ public class LoveActivity extends ActionBarActivity {
 	private CustomGallery mCustomGallery2;
 	View layoutSort, sortLayout;
 	CustomGalleryImageAdapter cAdapter;
-	
+	CustomGalleryImageAdapter2 cAdapter2;
 	LoveDialog dialog; 
 	View layoutTodayPercent; 
 	int count = 0;
+	ImageView settingImg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_love); 
+		ActionBar actionBar = getSupportActionBar(); 
+	      actionBar.setDisplayHomeAsUpEnabled(false);
+	      actionBar.setDisplayShowTitleEnabled(false);
+	      actionBar.setDisplayShowHomeEnabled(false);
+	      actionBar.setDisplayShowCustomEnabled(true); // Custom메뉴 설정 true
+	      actionBar.setCustomView(R.layout.custom_action_bar); 
+	      titleView = (TextView)actionBar.getCustomView().findViewById(R.id.text_title);
+	      titleView.setText("LOVE");
+	      settingImg = (ImageView)actionBar.getCustomView().findViewById(R.id.img_setting);
+	      settingImg.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(LoveActivity.this, SettingActivity.class);
+				startActivity(intent);
+			}
+		});
+		
+		
 		loveList = (ListView)findViewById(R.id.listView1); 
 		//repeatLovebtn = (ToggleButton)findViewById(R.id.toggleButton_love_sort);
-		//btn_LoveAdd = (Button)findViewById(R.id.btn_add_love);
+		btn_LoveAdd = (Button)findViewById(R.id.btn_add_love);
 		mLAdapter = new LoveAdapter(this); 
 		headerView = (View)getLayoutInflater().inflate(
                 R.layout.love_header_layout,null);  
@@ -69,16 +102,15 @@ public class LoveActivity extends ActionBarActivity {
 		isCondomView = (TextView)headerView.findViewById(R.id.text_iscondom1);
 		noCondomView = (TextView)headerView.findViewById(R.id.text_nocondom1);
 		lovesort = (Spinner)headerView.findViewById(R.id.love_sort);
-	//	layoutSort = (View)headerView.findViewById(R.id.layout_sort);
-	//	sortLayout = (View)headerView.findViewById(R.id.Sort_layout);
+		layoutSort = (View)headerView.findViewById(R.id.layout_sort);
+		sortLayout = (View)headerView.findViewById(R.id.Sort_layout);
 		YearView = (TextView)headerView.findViewById(R.id.text_sort_year);
 		monthView = (TextView)headerView.findViewById(R.id.text_sort_month);  
 		mHoloCircularProgressBar = (HoloCircularProgressBar)headerView.findViewById(R.id.holoCircularProgressBar1);
 		layoutTodayPercent = (View)headerView.findViewById(R.id.layout_love_today_percent);
 		sortAdapter = ArrayAdapter.createFromResource(this, R.array.list_love_sort, android.R.layout.simple_spinner_item);
 		cAdapter = new CustomGalleryImageAdapter(this);
-		
-		
+		cAdapter2 = new CustomGalleryImageAdapter2(this);
   
 		
 		layoutTodayPercent.setOnClickListener(new OnClickListener() {
@@ -121,7 +153,7 @@ public class LoveActivity extends ActionBarActivity {
 			}
 		});
 		
-		/*btn_LoveAdd.setOnClickListener(new View.OnClickListener() {
+		btn_LoveAdd.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -132,7 +164,7 @@ public class LoveActivity extends ActionBarActivity {
 				dialog.setArguments(b);
 				dialog.show(getSupportFragmentManager(), "dialog");
 			}
-		});*/
+		});
 		
 		loveList.setOnItemClickListener(new OnItemClickListener() {
 
@@ -151,7 +183,7 @@ public class LoveActivity extends ActionBarActivity {
 			}
 		}); 
 		
-		/* mCustomGallery = (CustomGallery) findViewById(R.id.gallery);
+		 mCustomGallery = (CustomGallery) findViewById(R.id.gallery);
 	     mCustomGallery.setAdapter(cAdapter);
 	     
 	     
@@ -181,7 +213,7 @@ public class LoveActivity extends ActionBarActivity {
 		}
 	});
 	     
-	  mCustomGallery2 = (CustomGallery) findViewById(R.id.gallery2); */
+	  mCustomGallery2 = (CustomGallery) findViewById(R.id.gallery2); 
 	  //if(month==2){
 		// Toast.makeText(MyApplication.getContext(), mCustomGallery2.getChildCount(),Toast.LENGTH_LONG).show();
 	  //mCustomGallery2.getChildAt(11).setVisibility(View.GONE);
@@ -197,15 +229,35 @@ public class LoveActivity extends ActionBarActivity {
 		  image.setBackgroundResource(R.drawable.pic10);
 		  mCustomGallery2.addView(image);*/
 	 // }
-	 
+	  mCustomGallery2.setAdapter(cAdapter2);
+	  mCustomGallery2.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view, int position,
+					long id) {
+				
+				 Toast.makeText(getBaseContext(), (position + 1) + "월",
+				    	 Toast.LENGTH_SHORT).show();
+				 
+				 monthView.setText(""+cAdapter2.mImageID[position]);
+				 month = Integer.parseInt(cAdapter2.mImageID[position]);
+				 initData();
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 	  
-	  /*	layoutSort.setOnClickListener(new View.OnClickListener() {
+	  	layoutSort.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				setVisibileDetailView(!isVisibleDetailView());
 			}
-		});*/
+		});
 
 		initData(); 
 		
@@ -319,18 +371,18 @@ public class LoveActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_one, menu);
+		//getMenuInflater().inflate(R.menu.menu_one, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-		case R.id.menu_m1 :
-			Intent intent = new Intent(LoveActivity.this, SettingActivity.class);
-			startActivity(intent);
-			return true;
-		}
+		//switch(item.getItemId()) {
+		//case R.id.menu_m1 :
+		//	Intent intent = new Intent(LoveActivity.this, SettingActivity.class);
+		//	startActivity(intent);
+		//	return true;
+		//}
 		return super.onOptionsItemSelected(item);
 	}
 }

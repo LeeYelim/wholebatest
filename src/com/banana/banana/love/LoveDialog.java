@@ -26,13 +26,19 @@ public class LoveDialog extends DialogFragment {
 	String loveday;
 	RadioButton condomView, notCondomView;
 	
-	
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		setStyle(STYLE_NO_TITLE, 0);
+		 
+		
+	}
 	@Override
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.love_dialog, container, false);
-		//getDialog().getWindow().requestFeature(R.style.cust_dialog);
-		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+		
 		btnOk = (Button)view.findViewById(R.id.btn_ok);
 		btnDelete = (Button)view.findViewById(R.id.btn_delete); 
 		LoveDayView = (EditText)view.findViewById(R.id.edit_love_day);

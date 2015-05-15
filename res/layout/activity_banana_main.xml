@@ -12,9 +12,14 @@
         android:layout_height="346dp"
         android:orientation="vertical" >
  
+<<<<<<< HEAD
 
         <LinearLayout
             android:id="@+id/LinearLayout2"
+=======
+        <LinearLayout
+            android:id="@+id/LayoutDday"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

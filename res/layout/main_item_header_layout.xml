@@ -4,10 +4,38 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+<<<<<<< HEAD
      <HorizontalScrollView
          android:id="@+id/horizontalScroll_item"
          android:layout_width="match_parent"
          android:layout_height="wrap_content"
+=======
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/main_item_select_small_banana_chip" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="교환할 수 있는 아이템"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+
+     <HorizontalScrollView
+         android:id="@+id/horizontalScroll_item"
+         android:layout_width="360dp"
+         android:layout_height="90dp"
+>>>>>>> yelim
          android:visibility="visible" >
 
         <LinearLayout

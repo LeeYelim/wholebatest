@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
     tools:context="com.banana.banana.setting.NoticeActivity" >
 
     <TextView
@@ -17,5 +18,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
+=======
+    tools:context="com.banana.banana.NoticeActivity" >
+
+    <TextView
+        android:id="@+id/text_notice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="공지사항" />
+
+    <TextView
+        android:id="@+id/text_notice_contents"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="버전 업데이트 1.0" />
+>>>>>>> yelim
 
 </LinearLayout>

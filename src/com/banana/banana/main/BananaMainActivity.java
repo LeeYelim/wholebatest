@@ -27,7 +27,11 @@ import com.banana.banana.main.MainAdapter.OnAdapterImageListener;
 import com.banana.banana.main.MainDialog.OnChangeFeelingListener;
 import com.banana.banana.main.PartnerDialog.OnChangePartnerFeelingListener;
 import com.banana.banana.mission.MissionActivity;
+<<<<<<< HEAD
 import com.banana.banana.mission.card.CardActivity;
+=======
+import com.banana.banana.mission.MissionPopupActivity;
+>>>>>>> yelim
 import com.banana.banana.mission.card.SimpleExample;
 import com.banana.banana.setting.SettingActivity;
 
@@ -36,21 +40,37 @@ public class BananaMainActivity extends ActionBarActivity {
 	ImageView coinView, ManChar, WomanChar, WcoinView;
 	ListView contentsList;
 	MainAdapter mAdapter; 
-	TextView ddayView, TextMlevel, TextFlevel;
+	TextView ddayView, TextMlevel, TextFlevel, titleView;
 	HorizontalScrollView hView, hView2; 
 	MainDialog dialog1;
 	PartnerDialog Pdialog;
 	String couple_birth, m_condition, f_condition, gender;
-	int f_level, m_level;  	
-	ActionBar actionbar;
+	int f_reward, m_reward;  
+	ImageView settingImg;
 		@Override
 		protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
 			setContentView(R.layout.activity_banana_main); ;  
-			actionbar = getSupportActionBar();
-			actionbar.setTitle("BANANA"); 
+			ActionBar actionBar = getSupportActionBar(); 
+		      actionBar.setDisplayHomeAsUpEnabled(false);
+		      actionBar.setDisplayShowTitleEnabled(false);
+		      actionBar.setDisplayShowHomeEnabled(false);
+		      actionBar.setDisplayShowCustomEnabled(true); // Custom메뉴 설정 true
+		      actionBar.setCustomView(R.layout.custom_action_bar); 
+		      titleView = (TextView)actionBar.getCustomView().findViewById(R.id.text_title);
+		      titleView.setText("BANANA");
+		      settingImg = (ImageView)actionBar.getCustomView().findViewById(R.id.img_setting);
+		      settingImg.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent(BananaMainActivity.this, SettingActivity.class);
+					startActivity(intent);
+				}
+			}); 
 			init();
-			initMyInfo();
+			//initMyInfo();
 			TextMlevel = (TextView)findViewById(R.id.text_male_level);
 			TextFlevel = (TextView)findViewById(R.id.text_female_level);
 			dialog1 = new MainDialog(this);
@@ -74,7 +94,6 @@ public class BananaMainActivity extends ActionBarActivity {
 					startActivity(intent);
 					} else if (data.category == "Mission") {
 						Intent intent = new Intent(BananaMainActivity.this, SimpleExample.class);
-						
 						startActivity(intent);
 					}
 				}
@@ -190,10 +209,10 @@ public class BananaMainActivity extends ActionBarActivity {
 						couple_birth = result.items.couple_birth;
 						m_condition = result.items.m_condition;
 						f_condition = result.items.f_condition;
-						m_level = result.items.m_level;
-						f_level = result.items.f_level;
-						TextMlevel.setText(""+m_level);
-						TextFlevel.setText(""+f_level);
+						m_reward = result.items.m_reward;
+						f_reward = result.items.f_reward;
+						TextMlevel.setText(""+m_reward);
+						TextFlevel.setText(""+f_reward);
 						ddayView.setText(couple_birth);
 						if(f_condition.equals("존좋")) {
 							//WomanChar.setImageResource(R.drawable.profile3);
@@ -213,7 +232,8 @@ public class BananaMainActivity extends ActionBarActivity {
 			});
 		}
 		
-		private void initMyInfo() {
+		/*private void initMyInfo() {
+>>>>>>> yelim
 			NetworkManager.getInstnace().getUserInfo(BananaMainActivity.this, new OnResultListener<UserInfoResult>() {
 
 				@Override
@@ -227,7 +247,10 @@ public class BananaMainActivity extends ActionBarActivity {
 				}
 			});
 		}
+<<<<<<< HEAD
 
+=======
+*/
 		private void initData() {
 			// TODO Auto-generated method stub
 				MainItemData d1 = new MainItemData();
@@ -285,19 +308,18 @@ public class BananaMainActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.menu_one, menu);
+		//getMenuInflater().inflate(R.menu.menu_one, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()) {
-		case R.id.menu_m1 :
-			Intent intent = new Intent(BananaMainActivity.this, SettingActivity.class);
-		 
-			startActivity(intent);
-			return true;
-		}
+		//switch(item.getItemId()) {
+		//case R.id.menu_m1 :
+		//	Intent intent = new Intent(LoveActivity.this, SettingActivity.class);
+		//	startActivity(intent);
+		//	return true;
+		//}
 		return super.onOptionsItemSelected(item);
 	}
 }

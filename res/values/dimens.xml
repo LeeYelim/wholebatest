@@ -7,6 +7,10 @@
     <dimen name="popup_feel_height">120sp</dimen>
     <dimen name="popup_main_item_width">360sp</dimen>
     <dimen name="popup_main_item_height">90sp</dimen>
+<<<<<<< HEAD
+=======
+ 
+>>>>>>> yelim
 	    <dimen name="mainActivityListItemHeight">100dp</dimen>
     <dimen name="mainActivityListItemPadding">16dp</dimen>
 </resources>

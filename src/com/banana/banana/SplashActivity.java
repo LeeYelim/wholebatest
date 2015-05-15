@@ -1,15 +1,14 @@
 package com.banana.banana;
- 
 
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import android.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -23,27 +22,29 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.banana.banana.intro.IntroActivity;
-import com.banana.banana.login.AutoLoginResponse;
-import com.banana.banana.love.NetworkManager;
+import com.banana.banana.login.LoginResult;
 import com.banana.banana.love.NetworkManager.OnResultListener;
 import com.banana.banana.main.BananaMainActivity;
 import com.banana.banana.signup.BirthDayInfoActivity;
 import com.banana.banana.signup.CoupleRequestActivity;
 import com.banana.banana.signup.FirstMeetingActivity;
 import com.banana.banana.signup.JoinResult;
-import com.banana.banana.signup.PeriodInfoActivity;
+import com.banana.banana.signup.SexInfoActivity;
 import com.banana.banana.tutorial.TutorialActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+ 
 
 public class SplashActivity extends ActionBarActivity {
 	
-	int join_code = 0; //---- 나중엔 필요없음 
-	String gender = "f";//---- 나중엔 필요없음 
-	int user_req = 0;//---- 나중엔 필요없음 
-	int user_no;
-	String g;
+	int join_code;   //join_code로 분기
+	String gender;  
+	int user_req;  //요청자인지 승인자인지
+	int user_no; 
+	Boolean isFirst;
+	String user_id, user_pass;
+	//String g;
 	 //----gcm
 		
 		public static final String EXTRA_MESSAGE = "message";
@@ -56,11 +57,13 @@ public class SplashActivity extends ActionBarActivity {
 	     */
 	    private static final String SENDER_ID = "492958073196";
 
+
 	    /**
 	     * Tag used on log messages.
 	     */
 	    static final String TAG = "GCM Demo";
 	    String regid;
+
 	    //TextView mDisplay;
 	    GoogleCloudMessaging gcm;
 	    AtomicInteger msgId = new AtomicInteger();
@@ -153,6 +156,33 @@ public class SplashActivity extends ActionBarActivity {
 	}
 
 	private void AutoLogin() {
+		// mDisplay = (TextView) findViewById(R.id.display);
+
+	        /*context = getApplicationContext();
+
+	        // Check device for Play Services APK. If check succeeds, proceed with GCM registration.
+	        if (checkPlayServices()) {  
+							gcm = GoogleCloudMessaging.getInstance(this);  
+	            regid = PropertyManager.getInstance().getRegistrationId();  
+	            if (regid.equals("")) {
+	                registerInBackground();
+	            }Log.i("regid",regid);
+	        } else {
+	            Log.i(TAG, "No valid Google Play Services APK found.");
+	            Log.i("regid",regid);
+	        }
+*/ 
+		user_id = PropertyManager.getInstance().getUserId();   //shared의 user_id확인
+		user_pass = PropertyManager.getInstance().getPassword();
+		if(!user_id.equals("") && !user_pass.equals("")) { 
+			Login();
+		} else {
+			Isfirst();
+		}
+	}
+	 
+
+	private void Login() {
 		// TODO Auto-generated method stub
 		TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 	 	String user_phone = telManager.getLine1Number();
@@ -163,89 +193,124 @@ public class SplashActivity extends ActionBarActivity {
 		String num2 = user_phone.substring(3, 7);
 		String num3 = user_phone.substring(7, 11);
 		user_phone = num1+"-"+num2+"-"+num3;
-		NetworkManager.getInstnace().autoLogin(SplashActivity.this, user_no, user_phone, new OnResultListener<AutoLoginResponse>() {
+
+		NetworkManager.getInstnace().login(SplashActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<LoginResult>() {
 
 			@Override
-			public void onSuccess(AutoLoginResponse result) {
-				// TODO Auto-generated method stub 
-				searchJoinInfo();
-				
+			public void onSuccess(LoginResult result) {
+				// TODO Auto-generated method stub
+				searchJoinInfo(); 
 			}
 
 			@Override
-			public void onFail(int code) { 
-				Boolean isFirst = PropertyManager.getInstance().getIsFirst();
-				if(isFirst == true) {
-					PropertyManager.getInstance().setIsFirst(false);
-					Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
-					startActivity(intent);
-					finish();
-				} else if (isFirst == false) {
-					Intent intent = new Intent(SplashActivity.this, IntroActivity.class);
-					startActivity(intent);
-					finish();
-				}
-				 
+			public void onFail(int code) {
+				// TODO Auto-generated method stub
+				
 			}
 		});
 	}
 
-
-	public void searchJoinInfo() {   
-	NetworkManager.getInstnace().searchJoinInfo(SplashActivity.this, join_code, gender, user_req, new OnResultListener<JoinResult>() {
- 
-		@Override
-		public void onSuccess(JoinResult result) {
-			// TODO Auto-generated method stub
-			int join_code = result.result.items.join_code;
-			user_req= result.result.items.user_req;
-			g = result.result.items.gender;
-			if(join_code == 0) { //메인페이지로
-				Intent intent = new Intent(SplashActivity.this, BananaMainActivity.class);  
-				startActivity(intent);
-				finish(); 
-			} 
-			else if(join_code == 3) { //요청자의 커플 승인대기 페이지(버튼 비활성화)
-				JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
-				joinData.join_code = join_code;
-				Intent intent = new Intent(SplashActivity.this, CoupleRequestActivity.class); 
-				startActivity(intent); 
-				finish();
-			} else if(join_code == 4) { //추가정보 미입력 페이지(기념일, 생일)
-				notInputJoinDetail(); 
-			} else if(join_code == 5) { //한명이 탈퇴했을 경우
-				Dialog();
-			}
-		}
-
-		@Override
-		public void onFail(int code) {
-			// TODO Auto-generated method stub
-			
-		}
-	});
-}
-	
-	
-	
-	
-		protected void notInputJoinDetail() {
+	private void Isfirst() {
 		// TODO Auto-generated method stub
-			if(user_req == 0 && g.equals("F")) {
-				Intent intent = new Intent(SplashActivity.this, FirstMeetingActivity.class);
-				startActivity(intent); 
-			} else if(user_req == 1 && g.equals("F")) {
-				Intent intent = new Intent(SplashActivity.this, BirthDayInfoActivity.class);
-				startActivity(intent); 
-			} else if(user_req == 0 && g.equals("M")) {
-				Intent intent = new Intent(SplashActivity.this, FirstMeetingActivity.class);
-				startActivity(intent); 
-			} else if(user_req == 1 && g.equals("M")) {
-				Intent intent = new Intent(SplashActivity.this, BirthDayInfoActivity.class);
-				startActivity(intent); 
-			}
+		isFirst = PropertyManager.getInstance().getIsFirst();
+		if(isFirst == true) {
+			PropertyManager.getInstance().setIsFirst(false);
+			Intent intent = new Intent(SplashActivity.this, TutorialActivity.class);
+			startActivity(intent); 
+			finish(); 
+		} else if (isFirst == false) {
+			Intent intent = new Intent(SplashActivity.this, IntroActivity.class); 
+			startActivity(intent); 
+			finish(); 
+		} 
 	}
 
+	public void searchJoinInfo() { //가입정보 조회
+		NetworkManager.getInstnace().searchJoinInfo(SplashActivity.this, new OnResultListener<JoinResult>() {
+
+			@Override
+			public void onSuccess(JoinResult result) {
+				// TODO Auto-generated method stub
+				join_code = result.result.items.join_code;
+				user_req= result.result.items.user_req;
+				gender = result.result.items.user_gender;
+				if(join_code == 0) { //메인페이지로
+					Intent intent = new Intent(SplashActivity.this, BananaMainActivity.class);  
+					startActivity(intent);
+					finish(); 
+				}  else if (join_code == 1) {
+					//Bundle bundle = new Bundle();
+					//bundle.putInt("join_code", join_code);
+					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
+					joinData.join_code = join_code; 
+					Intent intent = new Intent(SplashActivity.this, SexInfoActivity.class);
+					intent.putExtra("joinData", joinData); 
+					//intent.putExtras(bundle);
+					startActivity(intent);
+					finish();
+				} else if(join_code == 2) {
+					//Bundle bundle = new Bundle();
+					//bundle.putInt("join_code", join_code); 
+					PropertyManager.getInstance().setUserGender(result.result.items.user_gender);
+					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
+					joinData.join_code = join_code;
+					Intent intent = new Intent(SplashActivity.this, CoupleRequestActivity.class);
+					//intent.putExtras(bundle); 
+					intent.putExtra("joinData", joinData); 
+					startActivity(intent);
+					finish();
+				}  
+				else if(join_code == 3) { //요청자의 커플 승인대기 페이지(버튼 비활성화)  
+					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
+					joinData.join_code = join_code;
+					Intent intent = new Intent(SplashActivity.this, CoupleRequestActivity.class); 
+					intent.putExtra("joinData", joinData);
+					startActivity(intent); 
+					finish();
+				} else if(join_code == 4) { //추가정보 미입력 페이지(기념일, 생일)
+					notInputJoinDetail(); 
+				} else if(join_code == 5) { //한명이 탈퇴했을 경우
+					Dialog();
+				}
+			}
+
+			@Override
+			public void onFail(int code) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+} 
+	protected void notInputJoinDetail() { //추가정보 미입력
+		// TODO Auto-generated method stub
+		
+		if(user_req == 1) {
+				Intent intent = new Intent(SplashActivity.this, FirstMeetingActivity.class);
+				startActivity(intent);
+				finish();
+			} else if(user_req == 0) {
+				Intent intent = new Intent(SplashActivity.this, BirthDayInfoActivity.class);
+				startActivity(intent); 
+				finish();
+			}
+	}
+	
+	/*	protected void notInputJoinDetail() { //추가정보 미입력
+		// TODO Auto-generated method stub
+			if(user_req == 0 && gender.equals("F")) {
+				Intent intent = new Intent(SplashActivity.this, FirstMeetingActivity.class);
+				startActivity(intent); 
+			} else if(user_req == 1 && gender.equals("F")) {
+				Intent intent = new Intent(SplashActivity.this, BirthDayInfoActivity.class);
+				startActivity(intent); 
+			} else if(user_req == 0 && gender.equals("M")) {
+				Intent intent = new Intent(SplashActivity.this, FirstMeetingActivity.class);
+				startActivity(intent); 
+			} else if(user_req == 1 && gender.equals("M")) {
+				Intent intent = new Intent(SplashActivity.this, BirthDayInfoActivity.class);
+				startActivity(intent); 
+			}
+	}*/
 
 		protected void Dialog() {
 	
@@ -259,25 +324,7 @@ public class SplashActivity extends ActionBarActivity {
 					Toast.makeText(SplashActivity.this, "Yes Click", Toast.LENGTH_SHORT).show();
 				}
 			});
-			builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(SplashActivity.this, "Cancel Click", Toast.LENGTH_SHORT).show();
-				}
-			});
-			builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					Toast.makeText(SplashActivity.this, "Yes Click", Toast.LENGTH_SHORT).show();
-				}
-			});
-			builder.setOnCancelListener(new OnCancelListener() {
-				
-				@Override
-				public void onCancel(DialogInterface dialog) {
-					Toast.makeText(SplashActivity.this, "Dialog Canceled", Toast.LENGTH_SHORT).show();
-				}
-			});
+
 //			builder.setCancelable(false);
 			
 			builder.create().show();
@@ -290,6 +337,7 @@ public class SplashActivity extends ActionBarActivity {
 		getMenuInflater().inflate(R.menu.spalsh, menu);
 		return true;
 	}
+
 
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = PropertyManager.getInstance().mPrefs;
@@ -312,7 +360,6 @@ public class SplashActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
 
 	    private void sendRegistrationIdToBackend() {
 	      // Your implementation here.

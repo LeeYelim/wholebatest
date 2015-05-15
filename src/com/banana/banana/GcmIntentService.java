@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+
 import android.app.IntentService;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -70,12 +71,11 @@ public class GcmIntentService extends IntentService {
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
             	push_type=intent.getStringExtra(PUSH_TYPE);
             	push_type_num=(int) Integer.parseInt(push_type);
-            	if( push_type_num!=8){//다른 기기에서 로그아웃 한 경우 
+            	if( push_type_num!=8){//�떎瑜� 湲곌린�뿉�꽌 濡쒓렇�븘�썐 �븳 寃쎌슦 
             		sendNotification(push_type_num,send_intent);
             	}else {
             		PropertyManager.getInstance().setChipCount(chip_count);
             	}
-              
             }
         }
         // Release the wake lock provided by the WakefulBroadcastReceiver.
@@ -103,12 +103,12 @@ public class GcmIntentService extends IntentService {
     	  }else if(push_type==3){
     		  
     	  }else if(push_type==4){
-    		  //if(러브)
+    		  //if(�윭釉�)
     		  intent=new Intent(this,LovePopupActivity.class);
-    		  //else (미션)
+    		  //else (誘몄뀡)
     		  //intent=new Intent(this,MissionPopupActivity.class);
     	  }else if(push_type==5){
-    		  mlist_no=Integer.parseInt(send_intent.getStringExtra("mlist_no"));//리스트 번호
+    		  mlist_no=Integer.parseInt(send_intent.getStringExtra("mlist_no"));//由ъ뒪�듃 踰덊샇
     		  mission_name=send_intent.getStringExtra("mission_name");
     		  theme_no=Integer.parseInt(send_intent.getStringExtra("theme_no"));
 //    		  SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -137,8 +137,8 @@ public class GcmIntentService extends IntentService {
           .setSmallIcon(R.drawable.ic_launcher)
           .setContentTitle("GCM Notification")
           .setStyle(new NotificationCompat.BigTextStyle()
-          .bigText("메세지"))
-          .setContentText("메세지");
+          .bigText("硫붿꽭吏�"))
+          .setContentText("硫붿꽭吏�");
 
           mBuilder.setContentIntent(contentIntent);
           mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());

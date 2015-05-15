@@ -10,18 +10,18 @@ import android.widget.BaseAdapter;
 public class DdayAdapter extends BaseAdapter {
 
 
-	List<DdayItemData> ddaylist = new ArrayList<DdayItemData>();
+	List<Ddayitem> ddaylist = new ArrayList<Ddayitem>();
 	
 	public DdayAdapter() { 
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void addAll(List<DdayItemData> ddays) {
+	public void addAll(List<Ddayitem> ddays) {
 		ddaylist.addAll(ddays);
 		notifyDataSetChanged();
 	}
 
-	public void add(DdayItemData item) {
+	public void add(Ddayitem item) {
 		ddaylist.add(item);
 		notifyDataSetChanged();
 	}
@@ -55,6 +55,4 @@ public class DdayAdapter extends BaseAdapter {
 		view.setData(ddaylist.get(position));	
 		return view;
 	}
-
- 
 }

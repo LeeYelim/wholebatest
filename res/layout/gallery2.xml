@@ -6,12 +6,20 @@
 
     <!-- 각 이미지 표시 영역 -->
 
+<<<<<<< HEAD
    <ImageView
+=======
+   <TextView
+>>>>>>> yelim
          android:id="@+id/image"
         android:layout_width="322dp"
          android:layout_height="206dp"
         android:layout_centerHorizontal="true"
          android:layout_centerVertical="true">
+<<<<<<< HEAD
     </ImageView>
+=======
+    </TextView>
+>>>>>>> yelim
  
  </RelativeLayout> 

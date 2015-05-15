@@ -1,6 +1,10 @@
 package com.banana.banana.signup;
 
 import java.util.ArrayList;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> yelim
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +13,7 @@ public class WomanInfoParcelData implements Parcelable{
 	String period_start;
 	String period_end;
 	String period_cycle;
-	ArrayList<SyndromeList> syndromes; 
+	List<SyndromeList> syndromes; 
 	int couple_condom;
 	int user_pills;
 	String pills_date;

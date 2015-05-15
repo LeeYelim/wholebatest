@@ -9,12 +9,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.ListView;
+=======
+>>>>>>> yelim
 import android.widget.TextView;
 
 import com.banana.banana.R;
 
 public class SymtomInfoActivity extends ActionBarActivity {
+<<<<<<< HEAD
 
 	Button btn_before, btn_next;
 	TextView tv1,tv2,tv3,tv4, tv5;
@@ -23,11 +27,46 @@ public class SymtomInfoActivity extends ActionBarActivity {
 	SyndromeList data;
 	int ListCount=0;
 	boolean a,b,c,d,e;  
+=======
+ 
+	Button btn_before, btn_next;
+	ListLinearLayout symtomListView;
+	//SymtomAdapter mAdapter;
+	int[] textViewList = { 
+			R.id.textSymtom1, 
+			R.id.textSymtom2, 
+			R.id.textSymtom3,
+			R.id.textSymtom4, 
+			R.id.textSymtom5, 
+			R.id.textSymtom6,
+			R.id.textSymtom7, 
+			R.id.textSymtom8, 
+			R.id.textSymtom9,
+			R.id.textSymtom10, 
+			R.id.textSymtom11, 
+			R.id.textSymtom12,
+			R.id.textSymtom13,
+			R.id.textSymtom14, 
+			R.id.textSymtom15, 
+			R.id.textSymtom16,
+			R.id.textSymtom17 
+			};
+	SyndromeList[] dataList = SyndromeList.SYNDROME_DATA;
+	View.OnClickListener textViewClickListener = new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			int index = (Integer)v.getTag();
+			symtomListView.set(dataList[index]);
+		}
+	};
+>>>>>>> yelim
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_symtom_info);
+<<<<<<< HEAD
 		SymtomListView=(ListView)findViewById(R.id.list_Symtom);
 		a=true;
 		b=true;
@@ -150,6 +189,14 @@ public class SymtomInfoActivity extends ActionBarActivity {
 					}  
 					}
 			});	
+=======
+		for (int i = 0; i < textViewList.length; i++) {
+			TextView tv = (TextView)findViewById(textViewList[i]);
+			tv.setTag((Integer)i);
+			tv.setOnClickListener(textViewClickListener);
+		}
+		symtomListView = (ListLinearLayout)findViewById(R.id.list_Symtom);
+>>>>>>> yelim
 			
 			btn_before = (Button)findViewById(R.id.btn_before); 
 			btn_before.setOnClickListener(new View.OnClickListener() {
@@ -165,17 +212,41 @@ public class SymtomInfoActivity extends ActionBarActivity {
 				
 				@Override
 				public void onClick(View v) { 
+<<<<<<< HEAD
 					ArrayList<SyndromeList> items = mAdapter.items;
+=======
+//					ArrayList<SyndromeList> items = mAdapter.items;
+>>>>>>> yelim
 					/*Intent i = getIntent();
 					Bundle bundle = i.getExtras();   
 					Intent intent = new Intent(SymtomInfoActivity.this, UseInfoActivity.class);
 					intent.putExtra("items", items);
 					intent.putExtra("bundle", bundle);
 					startActivity(intent);*/
+<<<<<<< HEAD
 					
 					Bundle bundle = getIntent().getExtras();
 					WomanInfoParcelData wdata = bundle.getParcelable("wdata");
 					wdata.syndromes = items;
+=======
+					Bundle bundle = getIntent().getExtras();
+					WomanInfoParcelData wdata = bundle.getParcelable("wdata"); 	
+					wdata.syndromes = symtomListView.getSyndromeList();
+					
+					 
+					
+					
+					/*for(int i=0; i<=items.size(); i++) {	
+						 
+						if(!((SyndromeList)SymtomListView.getItemAtPosition(i)).syndrome_before.equals("") 
+								&& !((SyndromeList)SymtomListView.getItemAtPosition(i)).syndrome_after.equals("")) { 
+							wdata.syndromes.add(((SyndromeList)SymtomListView.getItemAtPosition(i)));
+						}
+					}*/
+						
+					
+					//wdata.syndromes = items;
+>>>>>>> yelim
 					Intent intent = new Intent(SymtomInfoActivity.this, UseInfoActivity.class);
 					intent.putExtra("wdata", wdata);
 					startActivity(intent);

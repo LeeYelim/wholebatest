@@ -23,7 +23,11 @@
 
         <RadioButton
             android:id="@+id/radio_yes"
+<<<<<<< HEAD
             style="@style/RadioButtonStyle"
+=======
+            style="@style/RadioButtonStyle" 
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="23dp"
@@ -37,6 +41,10 @@
         <RadioButton
             android:id="@+id/radio_no"
             style="@style/RadioButtonStyle2"
+<<<<<<< HEAD
+=======
+            android:background="@drawable/join_bt04"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"

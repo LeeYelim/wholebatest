@@ -14,6 +14,10 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.entity.StringEntity;
 
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> yelim
 
 import com.banana.banana.LogoutResponse;
 import com.banana.banana.MyApplication;
@@ -26,8 +30,14 @@ import com.banana.banana.main.CoupleInfoResponse;
 import com.banana.banana.main.CoupleInfoResult;
 import com.banana.banana.main.UserInfoResponse;
 import com.banana.banana.main.UserInfoResult;
+<<<<<<< HEAD
 import com.banana.banana.mission.BananaItemResponse;
 import com.banana.banana.mission.MissionResult;
+=======
+import com.banana.banana.mission.callmissionlist.BananaItemResponse;
+import com.banana.banana.mission.callmissionlist.MissionInfoResponse;
+import com.banana.banana.mission.callmissionlist.MissionResult;
+>>>>>>> yelim
 import com.banana.banana.setting.NoticeResponse;
 import com.banana.banana.setting.WomanInfoResponse;
 import com.banana.banana.signup.JoinResult;
@@ -85,8 +95,10 @@ import com.loopj.android.http.TextHttpResponseHandler;
 			public void onFail(int code); 
 		}
 		
-		public static final String SERVER = "http://zzanghansol.mooo.com";
-	/*-----------로그인---------*/	
+		// 더미 SERVER public static final String SERVER = "http://zzanghansol.mooo.com";
+		public static final String SERVER = "http://yeolwoo.mooo.com";
+	
+		/*-----------로그인---------*/	
 		public static final String AUTO_LOGIN_URL = SERVER + "/users/autologin"; 
 		public void autoLogin(Context context, int user_no, String user_phone, final OnResultListener<AutoLoginResponse> listener) {
 			RequestParams params = new RequestParams();
@@ -115,12 +127,13 @@ import com.loopj.android.http.TextHttpResponseHandler;
 		
 		
 		public static final String LOGIN_URL = SERVER + "/users/login";
-		public void login(Context context, String user_id, String user_pass, String user_phone, String reg_id, final OnResultListener<LoginResult> listener) {
+		public void login(Context context, String user_id, String user_pass, String user_phone, String user_regid, final OnResultListener<LoginResult> listener) {
 			RequestParams params = new RequestParams();
 			params.put("user_id", user_id);
-			params.put("user_pass", user_pass);
+			params.put("user_pw", user_pass);
 			params.put("user_phone", user_phone);
-			params.put("reg_id", reg_id);
+			params.put("user_regid", user_regid);
+			Log.i("login", "login");
 			
 			client.post(context, LOGIN_URL, params, new TextHttpResponseHandler() {
 				
@@ -140,14 +153,42 @@ import com.loopj.android.http.TextHttpResponseHandler;
 			});
 		}
 		
+		
+		/*----------중복로그인 시도---------*/
+		public static final String ACCEPT_LOGIN_URL = SERVER + "/users/acceptlogin";
+		public void acceptLogin(Context context, String user_id, String user_pass, String user_phone, String user_regid, final OnResultListener<LoginResult> listener) {
+			RequestParams params = new RequestParams();
+			params.put("user_id", user_id);
+			params.put("user_pw", user_pass);
+			params.put("user_phone", user_phone);
+			params.put("user_regid", user_regid);
+			
+			client.post(context, ACCEPT_LOGIN_URL, params, new TextHttpResponseHandler() {
+				
+				@Override
+				public void onSuccess(int statusCode, Header[] headers,
+						String responseString) { 
+					Gson gson = new Gson();
+					LoginResult results = gson.fromJson(responseString, LoginResult.class);
+					listener.onSuccess(results); 
+				}
+				
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						String responseString, Throwable throwable) {
+					listener.onFail(statusCode); 
+				}
+			});
+		}
+		
 		/*-----------회원가입---------*/	
 		public static final String JOIN_URL = SERVER + "/users/join";
-		public void addjoin(Context context, String user_id, String user_pass, String user_phone, String reg_id, final OnResultListener<JoinResult> listener) {
+		public void addjoin(Context context, String user_id, String user_pw, String user_phone, String user_regid, final OnResultListener<JoinResult> listener) {
 			RequestParams param = new RequestParams();
 			param.put("user_id", user_id);
-			param.put("user_pass", user_pass);
+			param.put("user_pw", user_pw);
 			param.put("user_phone", user_phone);
-			param.put("reg_id", reg_id);
+			param.put("user_regid", user_regid);
 			
 			client.post(context, JOIN_URL, param, new TextHttpResponseHandler() {
 				
@@ -168,13 +209,14 @@ import com.loopj.android.http.TextHttpResponseHandler;
 		}
 		
 		/*-----------가입정보 조회---------*/
-		public static final String SEARCH_JOIN_INFO_URL = SERVER + "/users/join/%s/%s/%s";
-		public void searchJoinInfo(Context context, int join_code, String user_gender, int user_req, final OnResultListener<JoinResult> listener) {
+		//더미public static final String SEARCH_JOIN_INFO_URL = SERVER + "/users/join/%s/%s/%s";
+		/*
+		    public void searchJoinInfo(Context context, int join_code, String gender, int user_req, final OnResultListener<JoinResult> listener) {
 			RequestParams param = new RequestParams();
 			param.put("join_code", join_code);
-			param.put("user_gender", user_gender);
+			param.put("gender", gender);
 			param.put("user_req", user_req);
-			String url = String.format(SEARCH_JOIN_INFO_URL, join_code,user_gender, user_req);
+			String url = String.format(SEARCH_JOIN_INFO_URL, join_code, gender, user_req);
 			
 			client.get(context, url, param, new TextHttpResponseHandler() {
 				
@@ -193,14 +235,14 @@ import com.loopj.android.http.TextHttpResponseHandler;
 				}
 			});
 		}
+		*/
 		
-		
-		/*public void searchJoinInfo(Context context, int user_no, final OnResultListener<JoinResult> listener) {
-			RequestParams param = new RequestParams();
-			param.put("user_no", user_no);
+		//실서버
+		public static final String SEARCH_JOIN_INFO_URL = SERVER + "/users/join";
+		public void searchJoinInfo(Context context, final OnResultListener<JoinResult> listener) {
 			
-			client.get(JOIN_URL, param, new TextHttpResponseHandler() {
-				
+			client.get(context, SEARCH_JOIN_INFO_URL, new TextHttpResponseHandler() {
+		
 				@Override
 				public void onSuccess(int statusCode, Header[] headers,
 						String responseString) { 
@@ -216,7 +258,7 @@ import com.loopj.android.http.TextHttpResponseHandler;
 				}
 			});
 		}
-		*/
+		
 		
 		/*----------커플요청---------*/
 		public static final String COUPLE_ASK_URL = SERVER + "/couple/ask";
@@ -498,13 +540,13 @@ import com.loopj.android.http.TextHttpResponseHandler;
 		/*-----------LOVE---------*/
 		public static final String LOVE_SEARCH_URL = SERVER + "/loves/%s/%s/%s";
 		public void getLoveList(Context context, int orderby, int year, int month, final OnResultListener<LoveList> listener) {
-		RequestParams params = new RequestParams();
+		/*RequestParams params = new RequestParams();
 		params.put("year", ""+year);
 		params.put("month", ""+month);
-		params.put("orderby", ""+orderby);
+		params.put("orderby", ""+orderby);*/
 		String url = String.format(LOVE_SEARCH_URL, year, month, orderby);
 		
-		client.get(context, url, params, new TextHttpResponseHandler() {
+		client.get(context, url, null ,new TextHttpResponseHandler() {
 			
 			@Override
 			public void onSuccess(int statusCode, Header[] headers,
@@ -686,7 +728,6 @@ import com.loopj.android.http.TextHttpResponseHandler;
 			RequestParams params = new RequestParams();
 			params.put("mlist_no", mlist_no); 
 			String url = String.format(MISSION_CONFIRM_URL, mlist_no);
-			
 			client.post(context, url, params, new TextHttpResponseHandler() {
 				
 				@Override
@@ -783,7 +824,6 @@ import com.loopj.android.http.TextHttpResponseHandler;
 				}
 			});
 		}
-		
 		
 		
 		public static final String OWN_ITEM_LIST_URL= SERVER + "/items/own";

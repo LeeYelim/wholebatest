@@ -7,7 +7,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+<<<<<<< HEAD
     tools:context="com.banana.banana.signup.PeriodDoseInfoActivity" >
+=======
+    tools:context="com.banana.banana.setting.PeriodDoseInfoActivity" >
+>>>>>>> yelim
 
     <TextView
         android:id="@+id/useText"
@@ -72,7 +76,12 @@
         android:layout_below="@id/radioGroup1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
+<<<<<<< HEAD
         android:background="@drawable/love_plus_day_bar" >
+=======
+        android:background="@drawable/love_plus_day_bar"
+        android:visibility="gone" >
+>>>>>>> yelim
 
         <TextView
             android:id="@+id/text_start"
@@ -146,7 +155,12 @@
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="0dp"
+<<<<<<< HEAD
         android:background="@drawable/love_plus_day_bar" >
+=======
+        android:background="@drawable/love_plus_day_bar"
+        android:visibility="gone" >
+>>>>>>> yelim
 
         <ToggleButton
             android:id="@+id/toggleButton1"

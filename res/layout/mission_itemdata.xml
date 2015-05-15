@@ -30,13 +30,23 @@
             android:text="TextView" />
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/missionState"
+=======
+            android:id="@+id/text_state"
+>>>>>>> yelim
             android:layout_width="64dp"
             android:layout_height="26dp"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
             android:layout_marginRight="26dp"
+<<<<<<< HEAD
             android:background="@drawable/mission_contents_yellow_icon2" />
+=======
+            android:background="@drawable/mission_contents_yellow_icon2"
+            android:gravity="center" />
+
+>>>>>>> yelim
     </RelativeLayout>
 
     <RelativeLayout
@@ -66,11 +76,18 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="42dp"
             android:layout_toRightOf="@+id/text_validdate"
+<<<<<<< HEAD
             android:text="2015.04.24"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/Mission_valid"
+=======
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/textView2"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/text_date"
@@ -82,7 +99,11 @@
             android:textSize="17sp" />
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/textView3"
+=======
+            android:id="@+id/text_hint"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/text_validdate"
@@ -94,7 +115,11 @@
             android:textSize="15sp" />
 
         <TextView
+<<<<<<< HEAD
             android:id="@+id/mission_hint"
+=======
+            android:id="@+id/textView4"
+>>>>>>> yelim
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@array/list_sort"
@@ -104,7 +129,10 @@
             android:layout_marginLeft="130dp"
             android:text="#명동#뽀뽀#성공적"
             android:textSize="15sp" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> yelim
     </RelativeLayout>
 
 </LinearLayout>

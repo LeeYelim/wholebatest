@@ -2,8 +2,11 @@ package com.banana.banana.dday;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+<<<<<<< HEAD
 import android.view.View;
 import android.widget.EditText;
+=======
+>>>>>>> yelim
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -30,10 +33,9 @@ public class DdayItemView extends FrameLayout{
 		
 	} 
 
-	public void setData(DdayItemData data) { 
-		ddayNumView.setText(data.ddaydate);
-		ddayNameView.setText(data.ddayName);
-		ddayDateView.setText(data.ddayDate);
-		
+	public void setData(Ddayitem data) { 
+			ddayNumView.setText(""+data.dday_no);
+			ddayNameView.setText(data.dday_name);
+			ddayDateView.setText(data.dday_date);
 	}
 }

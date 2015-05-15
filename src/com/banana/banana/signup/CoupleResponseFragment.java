@@ -43,11 +43,16 @@ public class CoupleResponseFragment extends Fragment {
 	}
 	
 	public void init() {
+<<<<<<< HEAD
+=======
+		
+>>>>>>> yelim
 		//Intent i = getActivity().getIntent();
 		//Bundle b = i.getExtras(); 
 		//String jcode = b.getString("join_code");
 		//int join_code = Integer.parseInt(jcode);
 	
+<<<<<<< HEAD
 		int join_code = 2;
 		String gender = "F";
 		
@@ -59,6 +64,19 @@ public class CoupleResponseFragment extends Fragment {
 			public void onSuccess(JoinResult result) { 
 				requestPhone = result.result.items.phone; 
 			 	edit_response_number.setText(requestPhone);
+=======
+		 
+		
+		//-----원래는 여기서 그냥 요청만 searchJoininfo 하면됨 파라매터 없이  
+	//다시 풀	
+		NetworkManager.getInstnace().searchJoinInfo(getActivity(), new OnResultListener<JoinResult>() {
+
+			@Override
+			public void onSuccess(JoinResult result) { 
+				requestPhone = result.result.items.partner_phone; 
+			 	edit_response_number.setText(requestPhone);
+			 	PropertyManager.getInstance().setUserGender(result.result.items.user_gender);
+>>>>>>> yelim
 			}
 
 			@Override
@@ -75,6 +93,10 @@ public class CoupleResponseFragment extends Fragment {
 			
 			@Override
 			public void onSuccess(JoinResult result) {
+<<<<<<< HEAD
+=======
+				
+>>>>>>> yelim
 				Intent intent = new Intent(getActivity(), BirthDayInfoActivity.class);
 				intent.addFlags(intent.FLAG_ACTIVITY_CLEAR_TASK);
 				intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);

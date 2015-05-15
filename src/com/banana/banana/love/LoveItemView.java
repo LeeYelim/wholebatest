@@ -2,23 +2,32 @@ package com.banana.banana.love;
 
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
+<<<<<<< HEAD
+=======
+import android.graphics.drawable.Drawable;
+>>>>>>> yelim
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+<<<<<<< HEAD
 import android.widget.ProgressBar;
+=======
+>>>>>>> yelim
 import android.widget.TextView;
 
 import com.banana.banana.R;
 
 public class LoveItemView extends FrameLayout {
 	LoveItem mData;
-
+	
 	TextView LoveDateView;
-	ImageView LoveProgressBar;
+	//ProgressBar LoveProgressBar;
 	TextView PossibilityView;
+	ImageView LoveProgressBar;
 	ClipDrawable cd;
+	
 	//ImageView LoveImage;
 	//ImageView LoveCondom;
 	/*ImageView CondomImage1;
@@ -57,9 +66,10 @@ public class LoveItemView extends FrameLayout {
 		// TODO Auto-generated method stub
 		LayoutInflater.from(getContext()).inflate(R.layout.love_list_item_layout, this);
 		LoveDateView = (TextView)findViewById(R.id.text_love_date);
-		LoveProgressBar = (ImageView)findViewById(R.id.love_progressBar);
+		//LoveProgressBar = (ProgressBar)findViewById(R.id.love_progressBar);
 		PossibilityView = (TextView)findViewById(R.id.num_love_possibility);
-		
+		//LoveProgressBar = (ProgressBar)findViewById(R.id.love_progressBar);
+		LoveProgressBar = (ImageView)findViewById(R.id.love_progressBar);
 		//LoveImage = (ImageView)findViewById(R.id.img_love);
 		//LoveCondom = (ImageView)findViewById(R.id.img_condom);
 		/*CondomImage1 = (ImageView)findViewById(R.id.img_condom1);
@@ -93,8 +103,9 @@ public class LoveItemView extends FrameLayout {
 	}*/
 
 	public void setData(LoveItem data) {
-		mData = data;
+		mData = data; 
 		LoveDateView.setText(data.date);
+		//LoveProgressBar.setProgress((int)data.pregnancy_rate);
 		if(data.pregnancy_rate>=70.0f){
 			LoveProgressBar.setImageResource(R.drawable.love_clip2);
 			cd=(ClipDrawable) LoveProgressBar.getDrawable();

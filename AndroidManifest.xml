@@ -10,7 +10,6 @@
 
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -24,6 +23,9 @@
 
     <uses-permission android:name="com.banana.banana.permission.C2D_MESSAGE" />
 
+    
+    
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -32,22 +34,26 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SplashActivity"
-            android:label="@string/title_activity_spalsh"
-            android:theme="@style/Theme.AppCompat.NoActionBar" >
+            android:icon="@drawable/main_emotion_select_sexy"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity
+         </activity>
+         
+        
+       <activity
             android:name=".login.LoginActivity"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.AppCompat.NoActionBar" >
         </activity>
         <activity
             android:name=".tutorial.TutorialActivity"
-            android:label="@string/title_activity_tutorial" >
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".intro.IntroActivity"
@@ -55,7 +61,9 @@
         </activity>
         <activity
             android:name=".signup.SignUpActivity"
-            android:label="@string/title_activity_sign_up" >
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" >
         </activity>
         <activity
             android:name=".signup.SexInfoActivity"
@@ -63,7 +71,8 @@
         </activity>
         <activity
             android:name=".signup.CoupleRequestActivity"
-            android:label="@string/title_activity_couple_request" >
+            android:label="@string/title_activity_couple_request"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         </activity>
         <activity
             android:name=".signup.FirstMeetingActivity"
@@ -79,7 +88,8 @@
         </activity>
         <activity
             android:name=".signup.SymtomInfoActivity"
-            android:label="@string/title_activity_symtom_info" >
+            android:label="@string/title_activity_symtom_info" 
+                        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".signup.UseInfoActivity"
@@ -121,6 +131,9 @@
             android:name=".mission.MissionActivity"
             android:label="@string/title_activity_mission_popup" >
         </activity>
+                <activity android:name=".mission.MissionPopupActivity" >
+        </activity>
+        
         <activity android:name=".mission.MissionDetailActivity" >
         </activity>
         <activity android:name=".mission.MissionSendAlram" >
@@ -137,11 +150,14 @@
         </activity>
         <activity android:name=".mission.PullMissionActivity" >
         </activity>
+        
+        <activity android:name=".mission.AddMissionActivity" >
+        </activity>
         <activity
             android:name=".signup.ResponseActivity"
             android:label="@string/title_activity_response" >
         </activity>
-        <!--  -->
+ 
         <activity android:name=".mission.MissionPopupActivity" >
         </activity>
         <activity android:name=".signup.PeriodDoseInfoActivity" >
@@ -167,6 +183,40 @@
         <activity android:name=".setting.NoticeActivity" >
         </activity>
 
+        <activity
+            android:name=".NoticeActivity"
+            android:label="@string/title_activity_notice" >
+        </activity>
+        <activity
+            android:name=".signup.PeriodDoseInfoActivity"
+            android:label="@string/title_activity_period_dose_info" >
+        </activity>
+        <activity
+            android:name=".SimpleActivity"
+            android:label="@string/title_activity_simple" >
+        </activity>
+        <activity
+            android:name=".mission.card.SimpleExample"
+            android:label="@string/title_activity_simple_example" >
+        </activity>
+        <activity
+            android:name="com.banana.banana.mission.card.CardActivity"
+            android:label="@string/title_activity_card" >
+        </activity>
+        
+        <activity
+            android:name=".LogoutActivity"
+            android:label="@string/title_activity_logout" >
+        </activity>
+        <activity
+            android:name=".MissionReceiveConfirmActivity"
+            android:label="@string/title_activity_mission_receive_confirm" >
+        </activity>
+        <activity
+            android:name=".WithDrawActivity"
+            android:label="@string/title_activity_with_draw" >
+        </activity>
+        
         <receiver
             android:name=".GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
@@ -183,18 +233,5 @@
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
-        <activity
-            android:name=".LogoutActivity"
-            android:label="@string/title_activity_logout" >
-        </activity>
-        <activity
-            android:name=".MissionReceiveConfirmActivity"
-            android:label="@string/title_activity_mission_receive_confirm" >
-        </activity>
-        <activity
-            android:name=".WithDrawActivity"
-            android:label="@string/title_activity_with_draw" >
-        </activity>
     </application>
-
 </manifest>

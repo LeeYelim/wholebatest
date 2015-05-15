@@ -90,7 +90,6 @@ public class SimpleExample extends Activity {
 					int position, long id) {
 			
 				
-				
 			}
 
 			@Override
@@ -148,9 +147,6 @@ public class SimpleExample extends Activity {
         
        
     }
-    
-    
-
   
 
 }

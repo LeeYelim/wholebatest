@@ -28,6 +28,7 @@
     <string name="title_activity_my_partener">MyPartenerActivity</string>
     <string name="title_activity_sequrity">SequrityActivity</string>
     <string name="title_activity_alarm">AlarmActivity</string>
+<<<<<<< HEAD
     <string name="title_activity_mission_popup">MissionPopupActivity</string>
     <string name="symtom1">빈혈</string>
     <string name="symtom2">복통</string>
@@ -36,13 +37,38 @@
     <string name="symtom5">몸살</string>
     <string name="title_activity_mission_send_ok">MissionSendOk</string>
     <string name="title_activity_mission_confirm">MissionConfirm</string>
+=======
+    <string name="title_activity_mission_popup">MissionPopupActivity</string> 
+    <string name="symtom1">식욕</string>
+    <string name="symtom2">분노</string>
+    <string name="symtom3">예민</string>
+    <string name="symtom4">변비</string>
+    <string name="symtom5">복통</string>
+    <string name="symtom6">우울</string>
+    <string name="symtom7">설사</string>
+    <string name="symtom8">여드름</string>
+    <string name="symtom9">짜증</string>
+    <string name="symtom10">유방통증</string>
+    <string name="symtom11">빈혈</string>
+    <string name="symtom12">무기력</string>
+    <string name="symtom13">불면증</string>
+    <string name="symtom14">두통</string>
+    <string name="symtom15">성욕</string> 
+    <string name="symtom16">식욕저하</string>
+    <string name="symtom17">소화불량</string> 
+>>>>>>> yelim
     <string name="title_activity_response">ResponseActivity</string>
     <string name="title_activity_notice">NoticeActivity</string>
     <string name="findpassword"><n>암호를 잊어버리셨나요?</n></string>
     <string name="title_activity_period_dose_info">PeriodDoseInfoActivity</string>
+<<<<<<< HEAD
     <string name="title_activity_mission_card_scratch">ActivityMissionCardScratch</string>
     <string name="terms">
 <![CDATA[ 이용약관 동의
+=======
+    <string name="terms">
+<![CDATA[이용약관 동의
+>>>>>>> yelim
  
 제 1 조 (목적)
 이 약관은 홀딱 바나나 ("회사" 또는 "홀바")가 제공하는 홀바 및 홀바 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -274,11 +300,22 @@
 회사의 상호, 주소, 전화번호 그 밖의 연락처는 다음과 같습니다.
 o	상호: 홀딱 바나나
 o	이메일 주소: crushonbanana@gmail.com 
+<<<<<<< HEAD
         
   ]]>
     </string>
     <string name="title_activity_logout">LogoutActivity</string>
     <string name="title_activity_mission_receive_confirm">MissionReceiveConfirmActivity</string>
     <string name="title_activity_with_draw">WithDrawActivity</string>
+=======
+        ]]>
+    </string>
+    <string name="title_activity_simple">SimpleActivity</string>
+    <string name="title_activity_simple_example">SimpleExample</string>
+    <string name="title_activity_card">CardActivity</string>
+    <string name="symtom_info">
+      
+        	"당신의 호르몬 상태에 따라 Mr.바나가\n상대방에게 팁을 줄거랍니다.\n자세히 입력해 주세요"</string>
+>>>>>>> yelim
 
 </resources>

@@ -1,6 +1,8 @@
 package com.banana.banana.dday;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -9,22 +11,45 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.banana.banana.R;
 import com.banana.banana.love.NetworkManager;
 import com.banana.banana.love.NetworkManager.OnResultListener;
-import com.banana.banana.mission.MissionItemData;
+import com.banana.banana.main.BananaMainActivity;
+import com.banana.banana.setting.SettingActivity;
 public class DdayActivity extends ActionBarActivity {
 
 	ListView ddayList;
 	DdayAdapter mDAdapter;
-	View DdayheaderView;
+	//View DdayheaderView;
 	Button btnAdd;
+	TextView titleView;
+	ImageView settingImg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_dday);
+		ActionBar actionBar = getSupportActionBar(); 
+	      actionBar.setDisplayHomeAsUpEnabled(false);
+	      actionBar.setDisplayShowTitleEnabled(false);
+	      actionBar.setDisplayShowHomeEnabled(false);
+	      actionBar.setDisplayShowCustomEnabled(true); // Custom메뉴 설정 true
+	      actionBar.setCustomView(R.layout.custom_action_bar); 
+	      titleView = (TextView)actionBar.getCustomView().findViewById(R.id.text_title);
+	      titleView.setText("BANANA");
+	      settingImg = (ImageView)actionBar.getCustomView().findViewById(R.id.img_setting);
+	      settingImg.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent = new Intent(DdayActivity.this, SettingActivity.class);
+				startActivity(intent);
+			}
+		}); 
 		btnAdd = (Button)findViewById(R.id.btn_add_dday);
 		btnAdd.setOnClickListener(new OnClickListener() {
 			
@@ -34,18 +59,16 @@ public class DdayActivity extends ActionBarActivity {
 				Bundle b = new Bundle();
 				b.putInt("code", 1);
 				DdayDialog dialog = new DdayDialog();
-				
-				
 				dialog.setArguments(b);
 				dialog.show(getSupportFragmentManager(), "dialog");
 			}
 		});
 		ddayList = (ListView)findViewById(R.id.listView_dday);
 		mDAdapter = new DdayAdapter();
-		/*DdayheaderView = (View)getLayoutInflater().inflate(
-                R.layout.dday_header_layout, null);
+		//DdayheaderView = (View)getLayoutInflater().inflate(
+               // R.layout.dday_header_layout, null);
 		
-		ddayList.addHeaderView(DdayheaderView, null, false);*/
+		//ddayList.addHeaderView(DdayheaderView, null, false);
 		ddayList.setAdapter(mDAdapter);
 		
 		initData();
@@ -58,7 +81,6 @@ public class DdayActivity extends ActionBarActivity {
 				Bundle b = new Bundle();
 				b.putInt("code", 0);
 				b.putInt("position", position);   
-				
 				DdayDialog dialog = new DdayDialog();
 				dialog.setArguments(b);
 				dialog.show(getSupportFragmentManager(), "dialog");  
@@ -68,23 +90,27 @@ public class DdayActivity extends ActionBarActivity {
 	  
 	private void initData() {
 		
-		for(int i=0;i<3;i++)
-		{
-			DdayItemData d=new DdayItemData();
-		
-			d.ddaydate="D-100";
-			d.ddayName="600일";
-			d.ddayDate="6.25목요일";
-			mDAdapter.add(d);
-			
-			
-		}
+		// TODO Auto-generated method stub 
+		NetworkManager.getInstnace().getDdayList(DdayActivity.this, new OnResultListener<DdayResult>() {
+
+			@Override
+			public void onSuccess(DdayResult result) {
+				// TODO Auto-generated method stub
+				mDAdapter.addAll(result.items);
+			}
+
+			@Override
+			public void onFail(int code) {
+				// TODO Auto-generated method stub
+				
+			}
+		}); 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.dday, menu);
+		//getMenuInflater().inflate(R.menu.dday, menu);
 		return true;
 	}
 
@@ -93,10 +119,10 @@ public class DdayActivity extends ActionBarActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
+		//int id = item.getItemId();
+		//if (id == R.id.action_settings) {
+		//	return true;
+		//}
 		return super.onOptionsItemSelected(item);
 	}
 }

@@ -6,18 +6,30 @@ import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ToggleButton;
 
 import com.banana.banana.R;
+import com.banana.banana.signup.MainActivity;
 
 public class LovePopupActivity extends ActionBarActivity {
 
-	Button btn_popUpOk;
+	Button btn_popUpOk, btn_close;
+	ToggleButton toggleCondom;
+	int is_condom;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_love_popup);
+		toggleCondom = (ToggleButton)findViewById(R.id.toggle_love_condom);
+		if(toggleCondom.isChecked()) {
+			is_condom = 1;
+		} else {
+			is_condom = 0;
+		}
+		
 		btn_popUpOk = (Button)findViewById(R.id.btn_popup_ok);
 		btn_popUpOk.setOnClickListener(new View.OnClickListener() {
 			
@@ -26,9 +38,13 @@ public class LovePopupActivity extends ActionBarActivity {
 				// TODO Auto-generated method stub
 				Intent intent = new Intent(LovePopupActivity.this, LovePopupOk.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+				intent.putExtra("is_condom", is_condom);
 				startActivity(intent);
 			}
 		});
+		
+		btn_close = (Button)findViewById(R.id.btn_close);
+		
 	}
 
 	@Override

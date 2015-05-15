@@ -2,7 +2,10 @@ package com.banana.banana.dday;
 
 import java.util.StringTokenizer;
 
+<<<<<<< HEAD
 import android.content.Context;
+=======
+>>>>>>> yelim
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,24 +30,16 @@ public class DdayDialog extends DialogFragment {
 	ToggleButton repeatbtn;
 	int dday_repeat, code, id;
 	@Override
-
-	
-	
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		getDialog().setTitle("기념일 추가");
-		
-	
 		getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-	 	//getDialog().getWindow().setBackgroundDrawableResource(R.color.dialogColor);
-		
-	 	View view = inflater.inflate(R.layout.dialog_dday, container, false);
+		View view = inflater.inflate(R.layout.dialog_dday, container, false);
 		mDAdpater = new DdayAdapter();
 		ddayNameView = (EditText)view.findViewById(R.id.edit_dday_name);
 		ddayYearView = (EditText)view.findViewById(R.id.edit_dday_year);
 		ddayMonthView = (EditText)view.findViewById(R.id.edit_dday_month);
 		ddayDayView = (EditText)view.findViewById(R.id.edit_dday_day);
-		
+		repeatbtn = (ToggleButton)view.findViewById(R.id.btn_dday_repeat);
 		
 		
 		Bundle b = getArguments();
@@ -164,17 +159,17 @@ public class DdayDialog extends DialogFragment {
 			// TODO Auto-generated method stub
 			Bundle b = getArguments(); 
 			int position = b.getInt("position");
-			String dday = result.items.get(position-1).dday_name;
-			String ddayDate = result.items.get(position-1).dday_date;
-			StringTokenizer tokens = new StringTokenizer(ddayDate);
-			String ddayYear = tokens.nextToken("-");
-			String ddayMonth = tokens.nextToken("-");
-			String ddayDay = tokens.nextToken("-"); 
+			String dday = result.items.get(position).dday_name;
+			String ddayDate = result.items.get(position).dday_date;
+			StringTokenizer tokens = new StringTokenizer(ddayDate, "-");
+			String ddayYear = tokens.nextToken();
+			String ddayMonth = tokens.nextToken();
+			String ddayDay = tokens.nextToken(); 
 			ddayNameView.setText(dday);
 			ddayYearView.setText(ddayYear);
 			ddayMonthView.setText(ddayMonth);
 			ddayDayView.setText(ddayDay);
-			id = result.items.get(position-1).dday_no;
+			id = result.items.get(position).dday_no;
 		}
 
 		@Override
