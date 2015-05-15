@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.banana.banana"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="21" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--
+     Creates a custom permission so only this app can receive its messages.
+
+     NOTE: the permission *must* be called PACKAGE.permission.C2D_MESSAGE,
+           where PACKAGE is the application's package name.
+    -->
+    <permission
+        android:name="com.banana.banana.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.banana.banana.permission.C2D_MESSAGE" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".SplashActivity"
+            android:icon="@drawable/main_emotion_select_sexy"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".login.LoginActivity"
+            android:label="@string/title_activity_login" >
+        </activity>
+        <activity
+            android:name=".tutorial.TutorialActivity"
+            android:label="@string/title_activity_tutorial"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".intro.IntroActivity"
+            android:label="@string/title_activity_intro" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".signup.SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="stateHidden" >
+        </activity>
+        <activity
+            android:name=".signup.SexInfoActivity"
+            android:label="@string/title_activity_sex_info" >
+        </activity>
+        <activity
+            android:name=".signup.CoupleRequestActivity"
+            android:label="@string/title_activity_couple_request"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".signup.FirstMeetingActivity"
+            android:label="@string/title_activity_first_meeting" >
+        </activity>
+        <activity
+            android:name=".signup.BirthDayInfoActivity"
+            android:label="@string/title_activity_birth_day_info" >
+        </activity>
+        <activity
+            android:name=".signup.PeriodInfoActivity"
+            android:label="@string/title_activity_period_info" >
+        </activity>
+        <activity
+            android:name=".signup.SymtomInfoActivity"
+            android:label="@string/title_activity_symtom_info" 
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
+        <activity
+            android:name=".signup.UseInfoActivity"
+            android:label="@string/title_activity_use_info" >
+        </activity>
+        <activity
+            android:name=".dday.DdayActivity"
+            android:label="@string/title_activity_dday" >
+        </activity>
+        <activity
+            android:name=".main.BananaMainActivity"
+            android:label="@string/title_activity_banana_main" >
+        </activity>
+        <activity
+            android:name=".setting.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
+        <activity
+            android:name=".setting.QnAActivity"
+            android:label="@string/title_activity_qn_a" >
+        </activity>
+        <activity
+            android:name=".setting.MyinfoActivity"
+            android:label="@string/title_activity_myinfo" >
+        </activity>
+        <activity
+            android:name=".setting.MyPartenerInfoActivity"
+            android:label="@string/title_activity_my_partener" >
+        </activity>
+        <activity
+            android:name=".setting.SequrityActivity"
+            android:label="@string/title_activity_sequrity" >
+        </activity>
+        <activity
+            android:name=".setting.AlarmActivity"
+            android:label="@string/title_activity_alarm" >
+        </activity>
+        <activity
+            android:name=".mission.MissionActivity"
+            android:label="@string/title_activity_mission_popup" >
+        </activity>
+        <activity android:name=".mission.MissionDetailActivity" >
+        </activity>
+        <activity android:name=".mission.MissionSendAlram" >
+        </activity>
+        <activity android:name=".mission.MissionPopupActivity" >
+        </activity>
+        <activity
+            android:name=".love.LovePopupOk"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        </activity>
+        <activity android:name=".love.LoveActivity" >
+        </activity>
+        <activity
+            android:name=".love.LovePopupActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" >
+        </activity>
+        <activity android:name=".mission.PullMissionActivity" >
+        </activity>
+        <activity android:name=".mission.AddMissionActivity" >
+        </activity>
+        <activity
+            android:name=".signup.ResponseActivity"
+            android:label="@string/title_activity_response" >
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <!--  -->
+
+
+        <!--
+          BroadcastReceiver that will receive intents from GCM
+          services and handle them to the custom IntentService.
+
+          The com.google.android.c2dm.permission.SEND permission is necessary
+          so only GCM services can send data messages for the app.
+        -->
+        <receiver
+            android:name=".GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+
+                <!-- Receives the actual messages. -->
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <!-- Receives the registration id. -->
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.banana.banana" />
+            </intent-filter>
+        </receiver>
+
+        <!--
+          Application-specific subclass of GCMBaseIntentService that will
+          handle received messages.
+
+          By default, it must be named .GCMIntentService, unless the
+          application uses a custom BroadcastReceiver that redefines its name.
+        -->
+        <service android:name=".GcmIntentService" />
+
+        <activity
+            android:name=".NoticeActivity"
+            android:label="@string/title_activity_notice" >
+        </activity>
+        <activity
+            android:name=".signup.PeriodDoseInfoActivity"
+            android:label="@string/title_activity_period_dose_info" >
+        </activity>
+        <activity
+            android:name=".SimpleActivity"
+            android:label="@string/title_activity_simple" >
+        </activity>
+        <activity
+            android:name=".mission.card.SimpleExample"
+            android:label="@string/title_activity_simple_example" >
+        </activity>
+        <activity
+            android:name="com.banana.banana.mission.card.CardActivity"
+            android:label="@string/title_activity_card" >
+        </activity>
+    </application>
+
+</manifest>
