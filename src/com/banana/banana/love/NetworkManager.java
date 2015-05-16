@@ -183,12 +183,13 @@ import com.loopj.android.http.TextHttpResponseHandler;
 		
 		/*-----------회원가입---------*/	
 		public static final String JOIN_URL = SERVER + "/users/join";
-		public void addjoin(Context context, String user_id, String user_pw, String user_phone, String user_regid, final OnResultListener<JoinResult> listener) {
+		public void addjoin(Context context, String user_id, String user_pw, String user_phone, String user_regid, String user_regdate, final OnResultListener<JoinResult> listener) {
 			RequestParams param = new RequestParams();
 			param.put("user_id", user_id);
 			param.put("user_pw", user_pw);
 			param.put("user_phone", user_phone);
 			param.put("user_regid", user_regid);
+			param.put("user_regdate", user_regdate);
 			
 			client.post(context, JOIN_URL, param, new TextHttpResponseHandler() {
 				

@@ -1,5 +1,10 @@
 package com.banana.banana.signup;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,15 +18,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-<<<<<<< HEAD
-=======
-import android.widget.Toast;
->>>>>>> yelim
 
 import com.banana.banana.JoinCodeInfoParcel;
 import com.banana.banana.PropertyManager;
 import com.banana.banana.R;
-import com.banana.banana.login.AutoLoginResponse;
 import com.banana.banana.login.LoginResult;
 import com.banana.banana.love.NetworkManager;
 import com.banana.banana.love.NetworkManager.OnResultListener;
@@ -38,12 +38,10 @@ public class SignUpActivity extends ActionBarActivity {
  	String reg_id = "regid"; //나중에 실제 gcmid로 바꿔야함!
 	String user_id, user_pass, user_phone; 
 	
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sign_up);
-
 		chk_agree = (CheckBox)findViewById(R.id.chk_agree1);
 		btn_next = (Button)findViewById(R.id.btn_next);
 		idView = (EditText)findViewById(R.id.edit_id);
@@ -72,7 +70,6 @@ public class SignUpActivity extends ActionBarActivity {
 				    user_pass = pwdView.getText().toString();				
 				    TelephonyManager telManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE); 
 				    user_phone = telManager.getLine1Number();
-
 				    if(user_phone.startsWith("+82")){
 			 			user_phone = user_phone.replace("+82", "0");
 			 		}
@@ -81,12 +78,17 @@ public class SignUpActivity extends ActionBarActivity {
 					String num3 = user_phone.substring(7, 11);
 					user_phone = num1+"-"+num2+"-"+num3;
 			 	
-					NetworkManager.getInstnace().addjoin(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<JoinResult>() {
+					
+					Date today = new Date(); 
+					Calendar cal = Calendar.getInstance();
+					cal.setTime(today); 
+					String user_regdate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(cal.getTime());
+					
+					NetworkManager.getInstnace().addjoin(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, user_regdate, new OnResultListener<JoinResult>() {
 					
 					@Override
 					public void onSuccess(JoinResult result) {
 						// TODO Auto-generated method stub
-
 						PropertyManager.getInstance().setUserId(user_id);
 						PropertyManager.getInstance().setPassword(user_pass);
 						login();
@@ -102,14 +104,12 @@ public class SignUpActivity extends ActionBarActivity {
 		});
 	}
 
-
 	
 	private void login() {
 		NetworkManager.getInstnace().login(SignUpActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<LoginResult>() {
 
 			@Override
 			public void onSuccess(LoginResult result) {
-
 				// TODO Auto-generated method stub
 				searchJoinInfo();
 			}
@@ -130,19 +130,17 @@ public class SignUpActivity extends ActionBarActivity {
 				if (jcode == 1) {
 					//Bundle bundle = new Bundle();
 					//bundle.putInt("join_code", jcode);
-
+					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
 					joinData.join_code = jcode; 
 					Intent intent = new Intent(SignUpActivity.this, SexInfoActivity.class);
 					intent.putExtra("joinData", joinData); 
 					//intent.putExtras(bundle);
 					startActivity(intent);
-
 					finish();
 				} else if(jcode == 2) {
 					//Bundle bundle = new Bundle();
 					//bundle.putInt("join_code", jcode); 
 					PropertyManager.getInstance().setUserGender(result.result.items.user_gender);
-
 					JoinCodeInfoParcel joinData = new JoinCodeInfoParcel();
 					joinData.join_code = jcode;
 					Intent intent = new Intent(SignUpActivity.this, CoupleRequestActivity.class);
@@ -160,7 +158,6 @@ public class SignUpActivity extends ActionBarActivity {
 			}
 		});
 	}
-
 	
 	/*private void Login() {
 		// TODO Auto-generated method stub
@@ -199,7 +196,8 @@ public class SignUpActivity extends ActionBarActivity {
 		});
 	}*/
 
-
+	
+		
 		/*
 		NetworkManager.getInstnace().searchJoinInfo(SignUpActivity.this, user_no, new OnResultListener<JoinResult>() {
 
