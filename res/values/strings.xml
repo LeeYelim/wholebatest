@@ -29,7 +29,7 @@
     <string name="title_activity_sequrity">SequrityActivity</string>
     
     <string name="title_activity_mission_confirm">MissionConfirm</string>
-	 <string name="title_activity_mission_popup">MissionPopupActivity</string> 
+	<string name="title_activity_mission_popup">MissionPopupActivity</string> 
     <string name="symtom1">식욕</string>
     <string name="symtom2">분노</string>
     <string name="symtom3">예민</string>
@@ -299,11 +299,12 @@ o	이메일 주소: crushonbanana@gmail.com
     <string name="title_activity_mission_receive_confirm">MissionReceiveConfirmActivity</string>
     <string name="title_activity_with_draw">WithDrawActivity</string>
 
-      
+    <string name="title_activity_mission_send_ok">MissionSendOkActivity</string>
   
     <string name="title_activity_simple">SimpleActivity</string>
     <string name="title_activity_simple_example">SimpleExample</string>
     <string name="title_activity_card">CardActivity</string>
+    
     <string name="symtom_info">
       
         	"당신의 호르몬 상태에 따라 Mr.바나가\n상대방에게 팁을 줄거랍니다.\n자세히 입력해 주세요"</string>

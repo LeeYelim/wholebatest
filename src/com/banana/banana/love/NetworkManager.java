@@ -14,10 +14,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.entity.StringEntity;
 
 import android.content.Context;
-<<<<<<< HEAD
-=======
 import android.util.Log;
->>>>>>> yelim
 
 import com.banana.banana.LogoutResponse;
 import com.banana.banana.MyApplication;
@@ -26,18 +23,11 @@ import com.banana.banana.dday.DdayResponse;
 import com.banana.banana.dday.DdayResult;
 import com.banana.banana.login.AutoLoginResponse;
 import com.banana.banana.login.LoginResult;
-import com.banana.banana.main.CoupleInfoResponse;
 import com.banana.banana.main.CoupleInfoResult;
 import com.banana.banana.main.UserInfoResponse;
 import com.banana.banana.main.UserInfoResult;
-<<<<<<< HEAD
 import com.banana.banana.mission.BananaItemResponse;
 import com.banana.banana.mission.MissionResult;
-=======
-import com.banana.banana.mission.callmissionlist.BananaItemResponse;
-import com.banana.banana.mission.callmissionlist.MissionInfoResponse;
-import com.banana.banana.mission.callmissionlist.MissionResult;
->>>>>>> yelim
 import com.banana.banana.setting.NoticeResponse;
 import com.banana.banana.setting.WomanInfoResponse;
 import com.banana.banana.signup.JoinResult;
@@ -48,6 +38,7 @@ import com.loopj.android.http.MySSLSocketFactory;
 import com.loopj.android.http.PersistentCookieStore;
 import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.TextHttpResponseHandler;
+
 
 
 	public class NetworkManager {
@@ -411,6 +402,35 @@ import com.loopj.android.http.TextHttpResponseHandler;
 				
 			});
 		}
+		
+		/*--------내기분 변경--------*/
+		public static final String MY_CONDITION_URL = SERVER + "/couple/mycondition";
+		public void myCondition(Context context, int condition_no, final OnResultListener<UserInfoResult> listener) {
+			
+			RequestParams params = new RequestParams();
+			params.put("condition_no", ""+condition_no);
+			client.post(context, MY_CONDITION_URL, params, new TextHttpResponseHandler() {
+				
+				@Override
+				public void onSuccess(int statusCode, Header[] headers,
+						String responseString) {
+					// TODO Auto-generated method stub
+					Gson gson = new Gson();
+					UserInfoResponse results = gson.fromJson(responseString, UserInfoResponse.class);
+					UserInfoResult list = results.result;
+					listener.onSuccess(list);
+				}
+				
+				@Override
+				public void onFailure(int statusCode, Header[] headers,
+						String responseString, Throwable throwable) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+		}
+		
+		
 		 
 		/*-----------DDAY---------*/
 		public static final String DDAY_SEARCH_URL = SERVER + "/ddays";	

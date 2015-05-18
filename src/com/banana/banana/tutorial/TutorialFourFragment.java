@@ -8,10 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-<<<<<<< HEAD
 import android.widget.TextView;
-=======
->>>>>>> yelim
 
 import com.banana.banana.R;
 import com.banana.banana.intro.IntroActivity;

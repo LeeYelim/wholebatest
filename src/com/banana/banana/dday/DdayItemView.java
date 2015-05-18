@@ -2,15 +2,12 @@ package com.banana.banana.dday;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-<<<<<<< HEAD
-import android.view.View;
-import android.widget.EditText;
-=======
->>>>>>> yelim
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.banana.banana.R;
+
+
 
 public class DdayItemView extends FrameLayout{
 

@@ -25,12 +25,7 @@ public class QnAActivity extends ActionBarActivity {
 	super.onCreate(savedInstanceState);
 	setContentView(R.layout.activity_qn_a);
 	final String str=getEmail(MyApplication.getContext());
-	
-<<<<<<< HEAD
-	
-=======
-	Toast.makeText(QnAActivity.this, "Email:"+str, Toast.LENGTH_LONG).show();
->>>>>>> yelim
+
 	edit_subject=(EditText)findViewById(R.id.edit_subject);
 	edit_qna=(EditText)findViewById(R.id.edit_qna);
 	btn_sendEmail=(Button)findViewById(R.id.btn_qna_send);

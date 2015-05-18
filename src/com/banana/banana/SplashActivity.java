@@ -1,17 +1,13 @@
 package com.banana.banana;
+ 
 
-import java.io.IOException;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import android.R;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -22,7 +18,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.banana.banana.intro.IntroActivity;
+import com.banana.banana.login.LoginActivity;
 import com.banana.banana.login.LoginResult;
+import com.banana.banana.love.NetworkManager;
 import com.banana.banana.love.NetworkManager.OnResultListener;
 import com.banana.banana.main.BananaMainActivity;
 import com.banana.banana.signup.BirthDayInfoActivity;
@@ -31,12 +29,10 @@ import com.banana.banana.signup.FirstMeetingActivity;
 import com.banana.banana.signup.JoinResult;
 import com.banana.banana.signup.SexInfoActivity;
 import com.banana.banana.tutorial.TutorialActivity;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
- 
 
 public class SplashActivity extends ActionBarActivity {
+	  
 	
 	int join_code;   //join_code로 분기
 	String gender;  
@@ -55,15 +51,13 @@ public class SplashActivity extends ActionBarActivity {
 	     * Substitute you own sender ID here. This is the project number you got
 	     * from the API Console, as described in "Getting Started."
 	     */
-	    private static final String SENDER_ID = "492958073196";
-
+	    String SENDER_ID = "381522331641";
 
 	    /**
 	     * Tag used on log messages.
 	     */
 	    static final String TAG = "GCM Demo";
-	    String regid;
-
+	    String reg_id = "regid";  //실제 gcm id로 바꿔야함
 	    //TextView mDisplay;
 	    GoogleCloudMessaging gcm;
 	    AtomicInteger msgId = new AtomicInteger();
@@ -77,85 +71,6 @@ public class SplashActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_spalsh);
-		checkAndRegister();
-
-		
-	}
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == PLAY_SERVICES_RESOLUTION_REQUEST) {
-			if (resultCode == Activity.RESULT_OK) {
-				checkAndRegister();
-			} else {
-				finish();
-			}
-		}
-	}
-
-	private void checkAndRegister() {
-		if (checkPlayServices()) {
-			String regid = PropertyManager.getInstance().getRegistrationId();
-			if (regid.equals("")) {
-				registerInBackground();
-			} else {
-				doRealStart();
-			}
-		}
-	}
-
-	private void doRealStart() {
-		user_no = PropertyManager.getInstance().getUserNo();   
-		AutoLogin();
-	}
-	
-	
-
-	private boolean checkPlayServices() {
-		int resultCode = GooglePlayServicesUtil
-				.isGooglePlayServicesAvailable(this);
-		if (resultCode != ConnectionResult.SUCCESS) {
-			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
-				Dialog dialog = GooglePlayServicesUtil.getErrorDialog(
-						resultCode, this, PLAY_SERVICES_RESOLUTION_REQUEST);
-				dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-					@Override
-					public void onCancel(DialogInterface dialog) {
-						finish();
-					}
-				});
-				dialog.show();
-			} else {
-				finish();
-			}
-			return false;
-		}
-		return true;
-	}
-	
-
-	private void registerInBackground() {
-		new AsyncTask<Void, Integer, String>() {
-			@Override
-			protected String doInBackground(Void... params) {
-				try {
-					GoogleCloudMessaging gcm = GoogleCloudMessaging
-							.getInstance(SplashActivity.this);
-					String regid = gcm.register(SENDER_ID);
-					PropertyManager.getInstance().setRegistrationId(regid);
-					return regid;
-				} catch (IOException ex) {
-				}
-				return null;
-			}
-
-			@Override
-			protected void onPostExecute(String msg) {
-				doRealStart();
-			}
-		}.execute();
-	}
-
-	private void AutoLogin() {
 		// mDisplay = (TextView) findViewById(R.id.display);
 
 	        /*context = getApplicationContext();
@@ -193,13 +108,19 @@ public class SplashActivity extends ActionBarActivity {
 		String num2 = user_phone.substring(3, 7);
 		String num3 = user_phone.substring(7, 11);
 		user_phone = num1+"-"+num2+"-"+num3;
-
 		NetworkManager.getInstnace().login(SplashActivity.this, user_id, user_pass, user_phone, reg_id, new OnResultListener<LoginResult>() {
 
 			@Override
 			public void onSuccess(LoginResult result) {
 				// TODO Auto-generated method stub
+				if(result.success == 1) {
 				searchJoinInfo(); 
+				} else {
+					PropertyManager.getInstance().setIsFirst(true);
+					PropertyManager.getInstance().setPassword("");
+					PropertyManager.getInstance().setUserId(""); 
+					Isfirst();
+				}
 			}
 
 			@Override
@@ -312,6 +233,7 @@ public class SplashActivity extends ActionBarActivity {
 			}
 	}*/
 
+
 		protected void Dialog() {
 	
 			AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
@@ -324,7 +246,7 @@ public class SplashActivity extends ActionBarActivity {
 					Toast.makeText(SplashActivity.this, "Yes Click", Toast.LENGTH_SHORT).show();
 				}
 			});
-
+			
 //			builder.setCancelable(false);
 			
 			builder.create().show();
@@ -337,8 +259,21 @@ public class SplashActivity extends ActionBarActivity {
 		getMenuInflater().inflate(R.menu.spalsh, menu);
 		return true;
 	}
-
-
+/*
+    private boolean checkPlayServices() {
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Log.i(TAG, "This device is not supported.");
+                finish();
+            }
+            return false;
+        }
+        return true;
+    }*/  
     private void storeRegistrationId(Context context, String regId) {
         final SharedPreferences prefs = PropertyManager.getInstance().mPrefs;
         //int appVersion = getAppVersion(context);
@@ -360,7 +295,78 @@ public class SplashActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	/* private void registerInBackground() {
+	        new AsyncTask<Void, Void, String>() {
+	            @Override
+	            protected String doInBackground(Void... params) {
+	                String msg = "";
+	                try {
+	                    if (gcm == null) {
+	                        gcm = GoogleCloudMessaging.getInstance(context);
+	                    
+	                  
+	                    }
+	                    regid = gcm.register(SENDER_ID);
+	                    msg = "Device registered, registration ID=" + regid;
+	                    Log.i("regid",regid);
+	                    // You should send the registration ID to your server over HTTP, so it
+	                    // can use GCM/HTTP or CCS to send messages to your app.
+	                    sendRegistrationIdToBackend();
 
+	                    // For this demo: we don't need to send it because the device will send
+	                    // upstream messages to a server that echo back the message using the
+	                    // 'from' address in the message.
+
+	                    // Persist the regID - no need to register again.
+	                    storeRegistrationId(context, regid);
+	                } catch (IOException ex) {
+	                    msg = "Error :" + ex.getMessage();
+	                    // If there is an error, don't just keep trying to register.
+	                    // Require the user to click a button again, or perform
+	                    // exponential back-off.
+	                }
+	                return msg;
+	            }
+
+	            @Override
+	            protected void onPostExecute(String msg) {
+	             //   mDisplay.append(msg + "\n");
+	            }
+	        }.execute(null, null, null);
+	    }
+
+	    // Send an upstream message.
+	    
+
+	    @Override
+	    protected void onDestroy() {
+	        super.onDestroy();
+	    }*/
+
+	    /**
+	     * @return Application's version code from the {@code PackageManager}.
+	     */
+	  /*  private static int getAppVersion(Context context) {
+	        try {
+	            PackageInfo packageInfo = context.getPackageManager()
+	                    .getPackageInfo(context.getPackageName(), 0);
+	            return packageInfo.versionCode;
+	        } catch (NameNotFoundException e) {
+	            // should never happen
+	            throw new RuntimeException("Could not get package name: " + e);
+	        }
+	    }*/
+
+	    /**
+	     * @return Application's {@code SharedPreferences}.
+	     */
+	 
+	    /**
+	     * Sends the registration ID to your server over HTTP, so it can use GCM/HTTP or CCS to send
+	     * messages to your app. Not needed for this demo since the device sends upstream messages
+	     * to a server that echoes back the message using the 'from' address in the message.
+	     */
 	    private void sendRegistrationIdToBackend() {
 	      // Your implementation here.
 	    }

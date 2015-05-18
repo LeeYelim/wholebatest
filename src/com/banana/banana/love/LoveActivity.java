@@ -1,6 +1,4 @@
 package com.banana.banana.love;
- 
-import java.util.Calendar;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
@@ -9,10 +7,7 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Intent;
 import android.os.Bundle;
-<<<<<<< HEAD
-=======
 import android.support.v7.app.ActionBar;
->>>>>>> yelim
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,10 +18,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-<<<<<<< HEAD
-=======
 import android.widget.ImageView;
->>>>>>> yelim
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,13 +26,11 @@ import android.widget.Toast;
 
 import com.banana.banana.R;
 import com.banana.banana.love.NetworkManager.OnResultListener;
-<<<<<<< HEAD
-=======
-import com.banana.banana.main.BananaMainActivity;
->>>>>>> yelim
 import com.banana.banana.setting.SettingActivity;
 
 import de.passsy.holocircularprogressbar.HoloCircularProgressBar;
+ 
+
 
 public class LoveActivity extends ActionBarActivity {
 	private HoloCircularProgressBar mHoloCircularProgressBar;

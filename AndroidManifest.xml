@@ -124,8 +124,7 @@
             android:label="@string/title_activity_sequrity" >
         </activity>
         <activity
-            android:name=".setting.AlarmActivity"
-            android:label="@string/title_activity_alarm" >
+            android:name=".setting.AlarmActivity" >
         </activity>
         <activity
             android:name=".mission.MissionActivity"
@@ -158,15 +157,11 @@
             android:label="@string/title_activity_response" >
         </activity>
  
-        <activity android:name=".mission.MissionPopupActivity" >
-        </activity>
         <activity android:name=".signup.PeriodDoseInfoActivity" >
         </activity>
         <activity android:name=".mission.card.CardActivity" >
         </activity>
         <activity android:name=".mission.card.SimpleExample" >
-        </activity>
-        <activity android:name=".mission.AddMissionActivity" >
         </activity>
         <activity
             android:name=".mission.scratch.MissionCardScratchActivity"
@@ -186,23 +181,11 @@
         <activity
             android:name=".NoticeActivity"
             android:label="@string/title_activity_notice" >
-        </activity>
-        <activity
-            android:name=".signup.PeriodDoseInfoActivity"
-            android:label="@string/title_activity_period_dose_info" >
-        </activity>
+        </activity> 
         <activity
             android:name=".SimpleActivity"
             android:label="@string/title_activity_simple" >
-        </activity>
-        <activity
-            android:name=".mission.card.SimpleExample"
-            android:label="@string/title_activity_simple_example" >
-        </activity>
-        <activity
-            android:name="com.banana.banana.mission.card.CardActivity"
-            android:label="@string/title_activity_card" >
-        </activity>
+        </activity>  
         
         <activity
             android:name=".LogoutActivity"

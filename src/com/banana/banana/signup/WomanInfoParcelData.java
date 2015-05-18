@@ -1,10 +1,7 @@
 package com.banana.banana.signup;
 
 import java.util.ArrayList;
-<<<<<<< HEAD
-=======
 import java.util.List;
->>>>>>> yelim
 
 import android.os.Parcel;
 import android.os.Parcelable;

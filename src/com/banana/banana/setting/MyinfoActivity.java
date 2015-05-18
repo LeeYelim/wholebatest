@@ -27,11 +27,7 @@ public class MyinfoActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_myinfo);
-<<<<<<< HEAD
 		//EditPeriodView = (View)findViewById(R.id.edit_period_layout);
-=======
-		EditPeriodView = (View)findViewById(R.id.edit_period_layout);
->>>>>>> yelim
 		menseListView = (ListView)findViewById(R.id.list_menses);
 		//mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, new ArrayList<String>());
 		mAdapter = new WomanInfoAdapter(this);

@@ -3,11 +3,11 @@ package com.banana.banana.main;
 public class CoupleInfoItem {
 	
 	public int m_reward;
-	public String m_condition;
+	public int m_condition;
 	public int m_level;
 	public int m_mission_stage;
 	public int f_reward;
-	public String f_condition;
+	public int f_condition;
 	public int f_level;
 	public int f_mission_stage;
 	public int f_period;

@@ -3,10 +3,7 @@
     android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:background="#ffffff"
-=======
->>>>>>> yelim
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -17,15 +14,11 @@
     <Button
         android:id="@+id/btn_myinfo"
         android:layout_width="match_parent"
-<<<<<<< HEAD
+
         android:layout_height="62dp"
         android:background="#Ffe100"
         android:text="내정보"
         android:textColor="#6a3906" />
-=======
-        android:layout_height="wrap_content"
-        android:text="내정보" />
->>>>>>> yelim
 
     <LinearLayout
         android:id="@+id/setting_security"
@@ -34,15 +27,6 @@
         android:orientation="vertical"
         android:visibility="visible" >
 
-<<<<<<< HEAD
-=======
-        <Button
-            android:id="@+id/btn_sequrity"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="보안설정" />
-
->>>>>>> yelim
         <LinearLayout
             android:id="@+id/detail_security"
             android:layout_width="match_parent"
@@ -129,27 +113,19 @@
         <Button
             android:id="@+id/btn_alarm"
             android:layout_width="match_parent"
-<<<<<<< HEAD
+
             android:layout_height="62dp"
             android:layout_marginTop="8dp"
             android:background="#F9c900"
             android:text="알림설정"
             android:textColor="#6a3906" />
-=======
-            android:layout_height="wrap_content"
-            android:text="알림설정" />
->>>>>>> yelim
 
         <LinearLayout
             android:id="@+id/detail_alarm_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-<<<<<<< HEAD
             android:visibility="visible" >
-=======
-            android:visibility="gone" >
->>>>>>> yelim
 
             <TextView
                 android:id="@+id/text_popup"
@@ -168,20 +144,17 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-<<<<<<< HEAD
+
                     android:background="#fffabc"
                     android:text="ON"
                     android:textColor="#6a3906" />
-=======
-                    android:text="ON" />
->>>>>>> yelim
 
                 <Button
                     android:id="@+id/Button01"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-<<<<<<< HEAD
+
                     android:background="#fffabc"
                     android:text="OFF"
                     android:textColor="#6a3906" />
@@ -204,9 +177,6 @@
                     android:layout_height="5dp"
                     android:src="@drawable/ic_launcher" />
 
-=======
-                    android:text="OFF" />
->>>>>>> yelim
             </LinearLayout>
 
             <TextView
@@ -226,34 +196,28 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-<<<<<<< HEAD
+
                     android:background="#fffabc"
                     android:text="ON"
                     android:textColor="#6a3906" />
-=======
-                    android:text="ON" />
->>>>>>> yelim
 
                 <Button
                     android:id="@+id/popup_off"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-<<<<<<< HEAD
+
                     android:background="#fffabc"
                     android:text="OFF"
                     android:textColor="#6a3906" />
 
-=======
-                    android:text="OFF" />
->>>>>>> yelim
             </LinearLayout>
 
         </LinearLayout>
 
     </LinearLayout>
 
-<<<<<<< HEAD
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -279,27 +243,16 @@
         android:background="#B3610b"
         android:text="Q&amp;A"
         android:textColor="#ffffff" />
-=======
-    <Button
-        android:id="@+id/btn_qna"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="큐엔에이" />
->>>>>>> yelim
+
 
     <Button
         android:id="@+id/btn_notice"
         android:layout_width="match_parent"
-<<<<<<< HEAD
         android:layout_height="62dp"
         android:layout_marginTop="8dp"
         android:background="#6a3906"
         android:text="공지사항"
         android:textColor="#ffffff" />
-=======
-        android:layout_height="wrap_content"
-        android:text="공지사항" />
->>>>>>> yelim
 
     <TextView
         android:id="@+id/textView2"
@@ -316,13 +269,10 @@
             android:id="@+id/btn_out"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
+
             android:background="#ffffff"
             android:text="회원탈퇴"
             android:textColor="#6a3906" />
-=======
-            android:text="회원탈퇴" />
->>>>>>> yelim
 
         <TextView
             android:id="@+id/textView1"
@@ -334,14 +284,11 @@
             android:id="@+id/btn_logout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
+
             android:background="#ffffff"
             android:text="로그아웃"
             android:textColor="#6a3906" />
 
-=======
-            android:text="로그아웃" />
->>>>>>> yelim
     </LinearLayout>
 
 </LinearLayout>

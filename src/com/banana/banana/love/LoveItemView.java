@@ -2,22 +2,16 @@ package com.banana.banana.love;
 
 import android.content.Context;
 import android.graphics.drawable.ClipDrawable;
-<<<<<<< HEAD
-=======
-import android.graphics.drawable.Drawable;
->>>>>>> yelim
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-<<<<<<< HEAD
-import android.widget.ProgressBar;
-=======
->>>>>>> yelim
 import android.widget.TextView;
 
 import com.banana.banana.R;
+
+
 
 public class LoveItemView extends FrameLayout {
 	LoveItem mData;

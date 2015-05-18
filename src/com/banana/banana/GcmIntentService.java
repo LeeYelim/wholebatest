@@ -1,13 +1,6 @@
 package com.banana.banana;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 
 import android.app.IntentService;
 import android.app.NotificationManager;
@@ -15,18 +8,9 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.NotificationCompat;
-import android.text.format.DateFormat;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.banana.banana.love.LovePopupActivity;
-import com.banana.banana.main.BananaMainActivity;
-import com.banana.banana.mission.MissionActivity;
 import com.banana.banana.mission.scratch.MissionCardScratchActivity;
 import com.banana.banana.signup.CoupleResponseFragment;
 import com.google.android.gms.gcm.GoogleCloudMessaging;

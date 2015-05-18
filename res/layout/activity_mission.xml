@@ -55,14 +55,9 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginBottom="10dp"
                     android:layout_marginRight="68dp"
-<<<<<<< HEAD
                     android:text="4"
                     android:textSize="12sp" />
-=======
-                    android:text="0"
-                    android:textSize="12sp" />
 
->>>>>>> yelim
             </RelativeLayout>
 
             <RelativeLayout
@@ -93,11 +88,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignRight="@+id/manScore"
                     android:layout_marginRight="70dp"
-<<<<<<< HEAD
                     android:text="4"
-=======
-                    android:text="0"
->>>>>>> yelim
                     android:textSize="12sp" />
 
                 <TextView

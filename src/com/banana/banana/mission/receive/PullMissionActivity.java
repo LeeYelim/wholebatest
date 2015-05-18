@@ -86,8 +86,8 @@ public class PullMissionActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	public void onClickHandler(View view) {
-		switch (view.getId()) {
-		case R.id.reset_button:
+		//switch (view.getId()) {
+		//case R.id.reset_button:
 			//scratchView.resetView();
 			//scratchView.setScratchAll(false); // todo: should include to resetView?
 			//updatePercentage(0f);
@@ -96,7 +96,7 @@ public class PullMissionActivity extends ActionBarActivity {
 			//Intent intent=new Intent(PullMissionActivity.this,MissionActivity.class);
 			//intent.putExtra("pushMission",s);
 			//startActivity(intent);
-			break;
-		}
+			//break;
+		//}
 	}
 }

@@ -11,10 +11,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
-<<<<<<< HEAD
-=======
 import com.banana.banana.JoinCodeInfoParcel;
->>>>>>> yelim
 import com.banana.banana.PropertyManager;
 import com.banana.banana.R;
 

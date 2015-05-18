@@ -13,20 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.banana.banana.LogoutResponse;
-<<<<<<< HEAD
-=======
-import com.banana.banana.NoticeActivity;
->>>>>>> yelim
 import com.banana.banana.R;
 import com.banana.banana.WithDrawReponse;
 import com.banana.banana.intro.IntroActivity;
 import com.banana.banana.login.LoginActivity;
 import com.banana.banana.love.NetworkManager;
 import com.banana.banana.love.NetworkManager.OnResultListener;
-<<<<<<< HEAD
-=======
-import com.banana.banana.tutorial.TutorialActivity;
->>>>>>> yelim
 
 public class SettingActivity extends ActionBarActivity {
 
@@ -42,11 +34,8 @@ public class SettingActivity extends ActionBarActivity {
 		btn_logout = (Button)findViewById(R.id.btn_logout);
 		btn_qna = (Button)findViewById(R.id.btn_qna);
 		btn_notice = (Button)findViewById(R.id.btn_notice);
-<<<<<<< HEAD
-		
-=======
-		btn_sequrity = (Button)findViewById(R.id.btn_sequrity);
->>>>>>> yelim
+
+		//btn_sequrity = (Button)findViewById(R.id.btn_sequrity);
 		btn_alarm = (Button)findViewById(R.id.btn_alarm);
 		btn_out = (Button)findViewById(R.id.btn_out);
 		btn_out.setOnClickListener(new View.OnClickListener() {
@@ -105,10 +94,6 @@ public class SettingActivity extends ActionBarActivity {
 						// TODO Auto-generated method stub
 						Toast.makeText(SettingActivity.this, result.result.message, Toast.LENGTH_SHORT).show();
 						Intent intent = new Intent(SettingActivity.this, LoginActivity.class);
-<<<<<<< HEAD
-=======
-						//Intent intent = new Intent(SettingActivity.this, TutorialActivity.class);
->>>>>>> yelim
 						intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK); 
 						startActivity(intent);
 					}
@@ -152,32 +137,6 @@ public class SettingActivity extends ActionBarActivity {
 				startActivity(intent);
 			}
 		});
-		
-<<<<<<< HEAD
-		
-=======
-		btn_sequrity.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
-				view=(LinearLayout)findViewById(R.id.LinearLayout1);
-				LinearLayout setting_security=(LinearLayout)view.findViewById(R.id.setting_security);
-				LinearLayout detail_security=(LinearLayout)setting_security.findViewById(R.id.detail_security);
-				if(securitybutton_click==false){
-				
-				detail_security.setVisibility(View.VISIBLE);
-				securitybutton_click=true;
-				}
-				else
-				{
-					detail_security.setVisibility(View.GONE);
-					securitybutton_click=false;
-				}
-			}
-		});
->>>>>>> yelim
 		
 		btn_alarm.setOnClickListener(new View.OnClickListener() {
 			

@@ -2,10 +2,6 @@ package com.banana.banana.dday;
 
 import java.util.StringTokenizer;
 
-<<<<<<< HEAD
-import android.content.Context;
-=======
->>>>>>> yelim
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -39,7 +35,7 @@ public class DdayDialog extends DialogFragment {
 		ddayYearView = (EditText)view.findViewById(R.id.edit_dday_year);
 		ddayMonthView = (EditText)view.findViewById(R.id.edit_dday_month);
 		ddayDayView = (EditText)view.findViewById(R.id.edit_dday_day);
-		repeatbtn = (ToggleButton)view.findViewById(R.id.btn_dday_repeat);
+		//repeatbtn = (ToggleButton)view.findViewById(R.id.btn_dday_repeat);
 		
 		
 		Bundle b = getArguments();
