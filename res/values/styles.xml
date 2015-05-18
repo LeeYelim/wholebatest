@@ -1,61 +1,3 @@
-<<<<<<< HEAD
-<resources xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <!--
-        Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
-    -->
-    <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
-        <!--
-            Theme customizations available in newer API levels can go in
-            res/values-vXX/styles.xml, while customizations relatesd to
-            backward-compatibility can go here.
-        -->
-    </style>
-
-    <!-- Application theme. -->
-    <style name="AppTheme" parent="AppBaseTheme">
-        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="circularProgressBarStyle">@style/CircularProgressBar</item> 
-       
-    </style>
-
- <!--    <style name="AppTheme.CustomActionBar">
-        <item name="actionBarSize">@dimen/actionbar_height</item>
-       
-      
-        
-       
-    </style> -->
-<style name="cust_dialog" parent="@android:style/Theme.Dialog">
- <item name="android:background">#fff000</item>
-    <item name="android:height">32dp</item>
-    <item name="android:textSize">12sp</item>
-     <item name="android:gravity">center_horizontal|center_vertical</item>
-    <item name="android:textColor">#6a3906</item>
-  </style>
-
-	<style name="dialog_title_style" parent="@android:style/Theme.Dialog">
-    <item name="android:background">#ffd900</item>
-    <item name="android:height">32dp</item>
-    <item name="android:textSize">12sp</item>
-     <item name="android:gravity">center_horizontal|center_vertical</item>
-    <item name="android:textColor">#6a3906</item>
-    
-</style>
-<style name="RadioButtonStyle" parent="@android:style/Widget.CompoundButton">
-    <item name="android:background">@drawable/useinfo_selector</item>
-    <item name="android:button">@null</item>
-</style>
-<style name="RadioButtonStyle2" parent="@android:style/Widget.CompoundButton">
-    <item name="android:background">@drawable/useinfo_selector2</item>
-    <item name="android:button">@null</item>
-</style>
- <style name="CircleTheme" parent="android:Theme.Holo">
-  <item name="circularProgressBarStyle">@style/CircularProgressBar</item> 
-  </style>
-</resources>
-=======
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
@@ -123,4 +65,4 @@
   
 
 </resources>
->>>>>>> yelim
+

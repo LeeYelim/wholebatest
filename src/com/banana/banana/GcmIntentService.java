@@ -71,7 +71,7 @@ public class GcmIntentService extends IntentService {
                     MESSAGE_TYPE_MESSAGE.equals(messageType)) {
             	push_type=intent.getStringExtra(PUSH_TYPE);
             	push_type_num=(int) Integer.parseInt(push_type);
-            	if( push_type_num!=8){//�떎瑜� 湲곌린�뿉�꽌 濡쒓렇�븘�썐 �븳 寃쎌슦 
+            	if( push_type_num!=8){
             		sendNotification(push_type_num,send_intent);
             	}else {
             		PropertyManager.getInstance().setChipCount(chip_count);
